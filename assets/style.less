@@ -1,0 +1,140 @@
+@color: rgb(128, 255, 0);
+@bg-100: #000;
+@bg-90: darken(@color, 90%);
+@bg-80: darken(@color, 80%);
+@bg-70: darken(@color, 70%);
+@bg-60: darken(@color, 60%);
+@bg-50: darken(@color, 50%);
+@bg-40: darken(@color, 40%);
+@bg-30: darken(@color, 30%);
+@bg-20: darken(@color, 20%);
+@bg-10: darken(@color, 10%);
+@bg-00: @color;
+@fg-00: @color;
+@bg-10: lighten(@color, 10%);
+@fg-20: lighten(@color, 20%);
+@fg-30: lighten(@color, 30%);
+@fg-40: lighten(@color, 40%);
+@fg-50: lighten(@color, 50%);
+@fg-60: lighten(@color, 60%);
+@fg-70: lighten(@color, 70%);
+@fg-80: lighten(@color, 80%);
+@fg-90: lighten(@color, 90%);
+@fg-100: contrast(@color);
+
+* {
+  font-family: 'Inconsolata', monospace;
+}
+
+body {
+  margin: 0;
+  padding: 64px 32px;
+  box-sizing: border-box;
+  width: 100vw;
+  min-height: 100vh;
+  background-color: @bg-80;
+  color: @fg-100;
+}
+
+div {
+  width: 100%;
+  height: max-content;
+  border-radius: 8px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+div.body {
+  margin: 0;
+  min-height: 100%;
+  background-color: @bg-40;
+  color: @fg-40;
+  display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: stretch;
+	align-content: stretch;
+  gap: 32px;
+  padding: 32px;
+
+  & div.header {
+    display: grid;
+    grid-template-columns: 128px auto;
+    grid-template-rows: 64px max-content;
+    grid-column-gap: 32px;
+    grid-row-gap: 16px;
+    padding: 32px;
+    background-color: @bg-30;
+    color: @fg-30;
+    white-space: pre-line;
+    border: 1px solid @fg-30;
+    & > * {
+      padding: 0;
+      &.pfp {
+        grid-row: 1 / 3;
+        height: 128px;
+        width: 128px;
+        aspect-ratio: 1 / 1;
+        border-radius: 8px;
+        object-fit: contain;
+        border: 1px solid @fg-30;
+      }
+      &.header {
+        font-size: 32px;
+        font-weight: 700;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        gap: 32px;
+        &::before, &::after {
+          content: "";
+          width: 100%;
+          height: 2px;
+          background-color: @fg-30;
+        }
+      }
+    }
+  }
+
+  & div.paragraph {
+    width: 100%;
+    padding: 0 16px;
+    white-space: pre-line;
+  }
+  & a {
+    font-weight: 700;
+    color: @fg-00;
+  }
+  & div.liteheader {
+    width: 100%;
+    white-space: nowrap;
+    font-size: 32px;
+    font-weight: 700;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: 32px;
+    box-sizing: border-box;
+    &::after {
+      content: "";
+      width: 100%;
+      height: 2px;
+      background-color: @fg-40;
+    }
+
+    &.indent1 {
+      font-size: 24px;
+      padding-left: 16px;
+    }
+  }
+  & name {
+    font-weight: 700;
+  }
+}
