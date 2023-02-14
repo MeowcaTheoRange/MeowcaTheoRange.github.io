@@ -126,7 +126,12 @@ async function generateAPIIndices() {
   });
   
   updates.innerHTML = "Finished!";
-  scrim.style.display = "none";
-  document.body.style.overflow = "auto";
+  hideScrim();
 }
 generateAPIIndices();
+
+function hideScrim() {
+  scrim.style.opacity = "0";
+  scrim.style.pointerEvents = "none";
+  document.body.style.overflowY = "auto";
+}
