@@ -1,0 +1,69 @@
+.ParallaxElements {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #F80;
+    z-index: 1;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: max(50vw, 960px);
+    grid-template-rows: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.ParallaxElements .coverImage {
+    position: relative;
+    background-color: #0F4;
+    width: 100%;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.ParallaxElements .coverImage .prlx {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+}
+
+.ParallaxElements .coverImage .prlx.prlx-example {
+    width: 200px;
+    height: 100px; 
+}
+
+.ParallaxElements .coverImage .prlx.effectImage {
+    width: 100%;
+    height: 20%;
+    top: initial;
+    bottom: 0;
+    background: #F80;
+    background: linear-gradient(90deg, #F80 0%, #08F 100%);
+}
+
+.ParallaxElements .coverImage .prlx.titleImage {
+    width: calc(100% - 64px);
+    height: 30%;
+    top: 32px;
+    left: 32px;
+    background: #F0F;
+    background: linear-gradient(45deg, #F0F 0%, #0F0 100%);
+}
+
+.ParallaxElements .coverImage .prlx.heroImage {
+    width: 100%;
+    height: 100%;
+    top: initial;
+    bottom: 0;
+    z-index: 1;
+    background: #F00;
+    background: linear-gradient(45deg, #F00 0%, #0FF 100%); 
+}
+
+@media (max-width:1008px) {
+    .ParallaxElements {
+        grid-auto-columns: 100vw;
+    }
+}

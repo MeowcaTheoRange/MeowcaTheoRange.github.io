@@ -1,11 +1,73 @@
 .App {
-  width: 720px;
-  margin: 64px auto;
+  width: 100%;
+  margin-top: 32px;
   padding: 16px;
-  margin-left: 128px;
-  background-color: #201000c0;
-  color: #FFDDBB;
+  background-color: #800000E0;
+  color: #FFBBBB;
   border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: auto;
+}
+
+.App a {
+  color: #FFBBBB;
+}
+
+.App hr {
+  width: 75%;
+  margin: 16px auto;
+  border-color: #FFBBBB;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 2px;
+}
+
+.App .socialMedia {
+  width: 100%;
+  display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+}
+
+
+.App.alignLeft {
+  align-items: flex-start;
+}
+
+.mainContent {
+  position: fixed;
+  height: 100vh;
+  width: 50vw;
+  min-width: 960px;
+  padding: 32px 128px 64px 128px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  pointer-events: none;
+  z-index: 10;
+  background-color: #0004;
 }
 
 /* 976 px */
+
+@media (max-width:1008px) {
+
+  .App {
+    margin: 0 auto;
+    margin-top: 32px;
+    max-width: none;
+    width: calc(100% - 32px);
+  }
+
+  .mainContent {
+    min-width: 0;
+    width: 100vw;
+    padding: 32px;
+  }
+
+}

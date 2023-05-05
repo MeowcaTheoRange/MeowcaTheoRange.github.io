@@ -5,6 +5,8 @@ body {
   font-size: 16px;
   background-color: #000;
   margin: 0;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 #root {
