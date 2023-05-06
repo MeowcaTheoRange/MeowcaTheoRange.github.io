@@ -1,5 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;500;700;800&display=swap');
 
+* {
+  image-rendering: optimizeSpeed;            
+  image-rendering: -moz-crisp-edges;         
+  image-rendering: -o-crisp-edges;           
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: pixelated;                
+  image-rendering: optimize-contrast;        
+  -ms-interpolation-mode: nearest-neighbor; 
+}
+
 body {
   font-family: 'Inconsolata', monospace;
   font-size: 16px;
