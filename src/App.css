@@ -2,8 +2,8 @@
   width: 100%;
   margin-top: 32px;
   padding: 16px;
-  background-color: #800000E0;
-  color: #FFBBBB;
+  background-color: #800000e0;
+  color: #ffbbbb;
   border-radius: 16px;
   overflow: hidden;
   display: flex;
@@ -13,13 +13,13 @@
 }
 
 .App a {
-  color: #FFBBBB;
+  color: #ffbbbb;
 }
 
 .App hr {
   width: 75%;
   margin: 16px auto;
-  border-color: #FFBBBB;
+  border-color: #ffbbbb;
   border-width: 1px;
   border-style: solid;
   border-radius: 2px;
@@ -28,12 +28,11 @@
 .App .socialMedia {
   width: 100%;
   display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	align-items: center;
-	align-content: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
 }
-
 
 .App.alignLeft {
   align-items: flex-start;
@@ -55,8 +54,7 @@
 
 /* 976 px */
 
-@media (max-width:1008px) {
-
+@media (max-width: 1008px) {
   .App {
     margin: 0 auto;
     margin-top: 32px;
@@ -69,5 +67,4 @@
     width: 100vw;
     padding: 32px;
   }
-
 }

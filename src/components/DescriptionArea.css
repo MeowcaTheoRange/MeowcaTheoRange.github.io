@@ -1,60 +1,61 @@
 .DescriptionArea {
-    max-width: 100%;
-    height: max-content;
-    margin: 16px 32px;
+  max-width: 100%;
+  height: max-content;
+  margin: 16px 32px;
 
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    align-items: flex-start;
-    justify-content: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 .DescriptionArea * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .DescriptionArea b {
-    font-weight: 100;
+  font-weight: 100;
 }
 
-.DescriptionArea p b, .DescriptionArea span b {
-    font-weight: bold;
+.DescriptionArea p b,
+.DescriptionArea span b {
+  font-weight: bold;
 }
 
 .DescriptionArea h1 {
-    font-size: 48px;
-    line-height: 48px;
+  font-size: 48px;
+  line-height: 48px;
 }
 
 .DescriptionArea h2 {
-    margin-top: 16px;
-    font-size: 40px;
-    line-height: 40px;
+  margin-top: 16px;
+  font-size: 40px;
+  line-height: 40px;
 }
 
 .DescriptionArea h3 {
-    font-size: 32px;
-    line-height: 32px;
+  font-size: 32px;
+  line-height: 32px;
 }
 
 .DescriptionArea h4 {
-    font-size: 24px;
-    line-height: 24px;
+  font-size: 24px;
+  line-height: 24px;
 }
 
 .DescriptionArea h5 {
-    font-size: 20px;
-    line-height: 20px;
+  font-size: 20px;
+  line-height: 20px;
 }
 
 .DescriptionArea h6 {
-    font-size: 16px;
-    line-height: 16px;
+  font-size: 16px;
+  line-height: 16px;
 }
 
 .DescriptionArea p {
-    font-size: 16px;
-    line-height: 16px;
+  font-size: 16px;
+  line-height: 16px;
 }

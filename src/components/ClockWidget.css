@@ -1,14 +1,14 @@
 .ClockWidget {
   height: 64px;
   display: flex;
-	align-items: center;
+  align-items: center;
   gap: 16px;
 }
 .ClockWidget .vertical {
   display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
 }
 .ClockWidget .vertical #time {
   font-size: 24px;

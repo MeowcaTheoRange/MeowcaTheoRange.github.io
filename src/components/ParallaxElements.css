@@ -1,72 +1,72 @@
 .ParallaxElements {
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: #F80;
-    z-index: 1;
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: max(50vw, 960px);
-    grid-template-rows: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #f80;
+  z-index: 1;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 960px;
+  grid-template-rows: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 .ParallaxElements .coverImage {
-    position: relative;
-    background-color: #0F4;
-    width: 100%;
-    z-index: 2;
-    overflow: hidden;
+  position: relative;
+  background-color: #0f4;
+  width: 100%;
+  z-index: 2;
+  overflow: hidden;
 }
 
 .ParallaxElements .coverImage .prlx {
-    position: absolute;
-    width: 200%;
-    height: 200%;
-    left: -50%;
-    top: -50%;
-    z-index: 2;
-    text-align: center;
-    /* background-size: 50%; */
-    background-position: 50% 50%;
-    background-repeat: repeat;
-    /* filter: drop-shadow(0px 0px 16px #0004); */
-    /* background-color: black; */
-    /* -webkit-transform: translate3d(0,0,1px);
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  left: -50%;
+  top: -50%;
+  z-index: 2;
+  text-align: center;
+  /* background-size: 50%; */
+  background-position: 50% 50%;
+  background-repeat: repeat;
+  /* filter: drop-shadow(0px 0px 16px #0004); */
+  /* background-color: black; */
+  /* -webkit-transform: translate3d(0,0,1px);
     -webkit-backface-visibility: hidden; */
 }
 
 .ParallaxElements .coverImage .prlx.prlx-example {
-    width: 200px;
-    height: 100px; 
+  width: 200px;
+  height: 100px;
 }
 
 .ParallaxElements .coverImage .prlx.effectImage {
-    width: 200%;
-    height: 200%;
+  width: 200%;
+  height: 200%;
 }
 
 .ParallaxElements .coverImage .prlx.titleImage {
-    width: 75%;
-    height: 100%;
-    max-height: 100vh;
-    top: 0;
-    left: 12.5%;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
+  width: 75%;
+  height: 100%;
+  max-height: 100vh;
+  top: 0;
+  left: 12.5%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
 }
 
 .ParallaxElements .coverImage .prlx.heroImage {
-    z-index: 1;
-    background-repeat: repeat;
+  z-index: 1;
+  background-repeat: repeat;
 }
 
-@media (max-width:1008px) {
-    .ParallaxElements {
-        grid-auto-columns: 100vw;
-    }
+@media (max-width: 1008px) {
+  .ParallaxElements {
+    grid-auto-columns: 100vw;
+  }
 }

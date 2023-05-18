@@ -1,14 +1,14 @@
 .Profile {
   display: flex;
   padding: 16px;
-	align-items: center;
+  align-items: center;
   justify-content: stretch;
   gap: 32px;
 }
 
 .Profile .pfp {
   width: 128px;
-  height:128px;
+  height: 128px;
   border-radius: 32px;
   object-fit: cover;
 }
@@ -19,17 +19,17 @@
   padding: 8px 0;
   box-sizing: border-box;
 
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   gap: 16px;
 }
 
 .Profile .secondary .name {
-	display: flex;
+  display: flex;
   flex-wrap: wrap;
-	flex-direction: row;
-	align-items: center;
+  flex-direction: row;
+  align-items: center;
   gap: 8px 16px;
 }
 
@@ -45,10 +45,8 @@
 
 /* 976 px */
 
-@media (max-width:976px) {
-
+@media (max-width: 976px) {
   .Profile {
     max-width: 688px;
   }
-
 }
