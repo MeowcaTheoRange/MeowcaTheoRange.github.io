@@ -2,8 +2,8 @@
   width: 100%;
   margin-top: 32px;
   padding: 16px;
-  background-color: #800000e0;
-  color: #ffbbbb;
+  background-color: #804000e0;
+  color: #ffddbb;
   border-radius: 16px;
   box-sizing: border-box;
   overflow: hidden;
@@ -14,13 +14,13 @@
 }
 
 .App a {
-  color: #ffbbbb;
+  color: #ffddbb;
 }
 
 .App hr {
   width: 75%;
   margin: 16px auto;
-  border-color: #ffbbbb;
+  border-color: #ffddbb;
   border-width: 1px;
   border-style: solid;
   border-radius: 2px;
@@ -62,14 +62,14 @@
   width: 48px;
   padding: 8px;
   border: none;
-  background-color: #800000;
+  background-color: #804000;
   box-shadow: 0 0 16px #0004;
-  color: #ffbbbb;
+  color: #ffddbb;
   border-radius: 24px;
 }
 
 .hideButton:hover {
-  background-color: #700000;
+  background-color: #703800;
 }
 
 /* 976 px */

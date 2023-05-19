@@ -32,33 +32,33 @@ function App() {
               icon="mastodon"
               link="https://karkatdyinginagluetrap.com/@trollcall"
               name="Mastodon"
-              color="FFBBBB"
+              color="ffddbb"
             />
             <MediaBox
               icon="art-book"
               link="https://mastodon.art/@trollcall"
               name="Mastodon (Art)"
-              color="FFBBBB"
+              color="ffddbb"
             />
             <MediaBox
               icon="github"
               link="https://github.com/MeowcaTheoRange"
               name="GitHub"
-              color="FFBBBB"
+              color="ffddbb"
             />
             <MediaBox
               icon="discord"
               iconPack="sf-black-filled"
               link="http://discord.trollcall.xyz/"
               name="TrollCall Discord"
-              color="FFBBBB"
+              color="ffddbb"
             />
             <MediaBox
               icon="homestuck"
               iconPack="small"
               link="https://mspfa.com/user/?u=109014333296332953331"
               name="MSPFA"
-              color="FFBBBB"
+              color="ffddbb"
             />
           </div>
         </div>

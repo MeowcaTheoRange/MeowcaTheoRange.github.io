@@ -13,8 +13,8 @@
 body {
   font-family: "Inconsolata", monospace;
   font-size: 16px;
-  background: rgb(255, 0, 0);
-  background: linear-gradient(0deg, rgba(127, 0, 0, 1) 0%, rgb(255, 0, 0) 100%);
+  background: #ff7f00;
+  background: linear-gradient(0deg, #804000 0%, #ff8000 100%);
   margin: 0;
   overflow-y: hidden;
   overflow-x: hidden;
