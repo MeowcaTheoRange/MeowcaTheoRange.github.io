@@ -4,7 +4,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #f80;
+  background-color: #ff0000;
   z-index: 1;
   display: grid;
   grid-auto-flow: column;
@@ -16,10 +16,15 @@
 
 .ParallaxElements .coverImage {
   position: relative;
+  top: 32px;
+  left: 32px;
   background-color: #0f4;
-  width: 100%;
+  width: calc(100% - 64px);
+  height: calc(100% - 64px);
+  border-radius: 64px;
   z-index: 2;
   overflow: hidden;
+  box-shadow: 0 0 32px #0006;
 }
 
 .ParallaxElements .coverImage .prlx {
@@ -61,11 +66,13 @@
 }
 
 .ParallaxElements .coverImage .prlx.heroImage {
+  width: 300%;
+  left: -100%;
   z-index: 1;
   background-repeat: repeat;
 }
 
-@media (max-width: 1008px) {
+@media (max-width: 960px) {
   .ParallaxElements {
     grid-auto-columns: 100vw;
   }

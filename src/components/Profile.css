@@ -36,6 +36,7 @@
 .Profile .secondary .name .title {
   font-size: 40px;
   font-weight: 800;
+  width: 100%;
 }
 
 .Profile .secondary .name .ipa {

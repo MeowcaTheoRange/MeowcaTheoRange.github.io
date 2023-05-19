@@ -25,7 +25,7 @@
   border-radius: 2px;
 }
 
-.App .socialMedia {
+.App .centej {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -43,18 +43,37 @@
   height: 100vh;
   width: 50vw;
   min-width: 960px;
-  padding: 32px 128px 64px 128px;
+  padding: 0 128px 64px 128px;
   overflow-y: auto;
   overflow-x: hidden;
   box-sizing: border-box;
   z-index: 10;
   background-color: #0004;
-  display: none;
+  transition: left 0.25s;
+  /* display: none; */
+}
+
+.hideButton {
+  position: fixed;
+  left: 8px;
+  top: 8px;
+  height: 48px;
+  width: 48px;
+  padding: 8px;
+  border: none;
+  background-color: #800000;
+  box-shadow: 0 0 16px #0004;
+  color: #ffbbbb;
+  border-radius: 24px;
+}
+
+.hideButton:hover {
+  background-color: #700000;
 }
 
 /* 976 px */
 
-@media (max-width: 1008px) {
+@media (max-width: 960px) {
   .App {
     margin: 0 auto;
     margin-top: 32px;
@@ -66,5 +85,6 @@
     min-width: 0;
     width: 100vw;
     padding: 32px;
+    padding-top: 0;
   }
 }

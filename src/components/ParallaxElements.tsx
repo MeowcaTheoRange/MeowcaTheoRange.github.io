@@ -64,6 +64,22 @@ var projectArray: Project[] = [
   },
 ];
 
+function clamp(input: number, min: number, max: number): number {
+  return input < min ? min : input > max ? max : input;
+}
+
+function map(
+  current: number,
+  in_min: number,
+  in_max: number,
+  out_min: number,
+  out_max: number
+): number {
+  const mapped: number =
+    ((current - in_min) * (out_max - out_min)) / (in_max - in_min) + out_min;
+  return clamp(mapped, out_min, out_max);
+}
+
 function selectRandom(max: number, base: number) {
   return Math.floor(Math.random() * max).toString(base);
 }
@@ -102,10 +118,7 @@ function ParallaxElements() {
     var loops = 0;
     var isStable = true;
     const scrollContainer = (gapTime: number) => {
-      var eleWidth = Math.max(
-        container.firstElementChild?.clientWidth ?? 0,
-        480
-      );
+      var eleWidth = Math.min(window.innerWidth, 960);
       setScrollAmount(Math.ceil(window.innerWidth / eleWidth) + 1);
       loops++;
       var dt = gapTime - prevGapTime;
@@ -125,11 +138,9 @@ function ParallaxElements() {
     interval = requestAnimationFrame(scrollContainer);
 
     container.addEventListener("scroll", (ev) => {
-      var eleWidth = Math.max(
-        container.firstElementChild?.clientWidth ?? 0,
-        480
-      );
+      var eleWidth = Math.min(window.innerWidth, 960);
       var myScrollAmount = Math.ceil(window.innerWidth / eleWidth) + 1;
+      // console.log(eleWidth, myScrollAmount, container.scrollLeft);
       if (container.scrollLeft < eleWidth) {
         container.scrollLeft =
           container.scrollWidth - eleWidth * myScrollAmount - 1;
@@ -178,9 +189,14 @@ function ParallaxElements() {
             var mouseEffectY = (centerMouseY * mousePower) / myDepth;
             var mouseEffectX = (centerMouseX * mousePower) / myDepth;
             parallaxElement.style.transform = `translate(${Math.floor(
-              progressX * scrollBox.clientWidth * (myDepth * 1.5) + mouseEffectX
+              progressX *
+                scrollBox.clientWidth *
+                (myDepth * (window.innerWidth / scrollBox.clientWidth)) +
+                mouseEffectX
             )}px, ${Math.floor(
-              progressY * scrollBox.clientHeight * (myDepth * 1.5) +
+              progressY *
+                scrollBox.clientHeight *
+                (myDepth * (window.innerWidth / scrollBox.clientWidth)) +
                 mouseEffectY
             )}px)`;
           }
@@ -206,7 +222,7 @@ function ParallaxElements() {
     >
       <div
         className="prlx effectImage heroImage"
-        data-depth="-0.6"
+        data-depth="-0.9"
         style={{
           backgroundImage: `url("${v.dir}bg.png")`,
         }}
@@ -214,7 +230,7 @@ function ParallaxElements() {
       {v.repeatRules.map((canRepeat, i) => (
         <div
           className="prlx effectImage"
-          data-depth={canRepeat[1] ?? (0 - v.fg_max + (i - 1)) / 10}
+          data-depth={canRepeat[1] ?? map(i / v.fg_max, 0, 1, -0.9, -0.1)}
           style={{
             backgroundImage: `url("${v.dir}fg_${i}.png")`,
             backgroundRepeat: canRepeat[0],
@@ -223,7 +239,7 @@ function ParallaxElements() {
       ))}
       <div
         className="prlx titleImage"
-        data-depth="-0.1"
+        data-depth="0.2"
         style={{
           backgroundImage: `url("${v.dir}logo.png")`,
         }}
