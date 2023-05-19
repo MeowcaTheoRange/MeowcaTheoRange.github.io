@@ -239,7 +239,7 @@ function ParallaxElements() {
       ))}
       <div
         className="prlx titleImage"
-        data-depth="0.2"
+        data-depth="0"
         style={{
           backgroundImage: `url("${v.dir}logo.png")`,
         }}
