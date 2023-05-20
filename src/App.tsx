@@ -25,7 +25,6 @@ function App() {
             pronouns="he/him"
             birthday="Aug 7 (Minor)"
           />
-          <div className="centej"></div>
           <hr />
           <div className="centej">
             <MediaBox

@@ -11,7 +11,7 @@ function ClockWidget() {
     var radius = canvas.height / 2;
     ctx.lineWidth = 2;
     ctx.lineCap = "round";
-    ctx.strokeStyle = "#FFBBBB";
+    ctx.strokeStyle = "#FFDDBB";
     ctx.resetTransform();
     ctx.translate(radius, radius);
     setInterval(drawTime, 1000);
