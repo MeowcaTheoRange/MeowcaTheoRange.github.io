@@ -15,7 +15,7 @@ function MediaBox({
   name: string;
 }) {
   return (
-    <a className="MediaBox" href={link}>
+    <a className="MediaBox" href={link} target="_blank">
       <img
         alt={name}
         height="48"

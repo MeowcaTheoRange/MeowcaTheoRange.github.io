@@ -14,6 +14,7 @@
   overflow-x: -moz-scrollbars-none;
   overflow-y: hidden;
   scrollbar-width: none;
+  align-items: center;
 }
 
 .ParallaxElements::-webkit-scrollbar {
@@ -21,16 +22,20 @@
 }
 
 .ParallaxElements .coverImage {
+  border: none;
   position: relative;
-  top: 32px;
   left: 32px;
+  top: 0;
   background-color: #0f4;
   width: calc(100% - 64px);
   height: calc(100% - 64px);
+  max-height: 1080px;
   border-radius: 64px;
   z-index: 2;
   overflow: hidden;
   box-shadow: 0 0 32px #0006;
+  transition: width 0.25s, left 0.25s, height 0.25s, border-radius 0.25s,
+    box-shadow 0.25s;
 }
 
 .ParallaxElements .coverImage .prlx {
@@ -58,6 +63,13 @@
 .ParallaxElements .coverImage .prlx.effectImage {
   width: 200%;
   height: 200%;
+  image-rendering: optimizeSpeed;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -o-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: pixelated;
+  image-rendering: optimize-contrast;
+  -ms-interpolation-mode: nearest-neighbor;
 }
 
 .ParallaxElements .coverImage .prlx.titleImage {
@@ -81,5 +93,15 @@
 @media (max-width: 960px) {
   .ParallaxElements {
     grid-auto-columns: 100vw;
+  }
+}
+
+@media (max-height: 540px) {
+  .ParallaxElements .coverImage {
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    box-shadow: none;
   }
 }

@@ -63,10 +63,9 @@ function App() {
         </div>
         <div className="App alignLeft">
           <DescriptionArea>{`# DO NOT INTERACT IF:
-- You use slurs you can't reclaim
+- Racist, homophobic, all of the ["basic DNI criteria"](https://dni-criteria.carrd.co/) or whatevs (I FUCKING HATE CARRD)
 - You ure overly sexual, ALL of the time.
-- You try to create small talk in DMs, unless we're friends (but still, PLEASE only DM me for A REASON!)
-- You are Microsoft, Google, or any other large company. **/s**
+- You try to create small talk in DMs, unless we're friends.
 - You are a series of precarious setups made to work together in a strained environment (e.g. a heavy box on a small desk or a bodged application/tool put into production)`}</DescriptionArea>
         </div>
         <div className="App alignLeft">
@@ -86,6 +85,8 @@ My opinion on React is that it's pretty great, and it helps me integate HTML wit
 
 I haven't made projects in Haxe for a while, but I would usually use **HaxeUI** or **HaxeFlixel**.
 
+I'm quite good at adapting to new environments, like when I moved TrollCallNext from a local MongoDB instance to Firebase, and I had to adapt all of the code. That wasn't too hard, because I could use the **firebase** and **yup** packages for database management and schema validation respectively.
+
 ## Indecision may or may not be my problem. 
 
 This is my **third** portfolio page! Isn't that insane?
@@ -96,7 +97,7 @@ I use Linux, and I'm currently using **Fedora Linux** right now, although that c
 
 I have **ADHD**, which makes it kind of hard to focus on my tasks sometimes, but occasionally, I pull through like a race horse if the circumstances are right!
 
-I am also very social! You can find me on [Discord](#main) or [Mastodon](#main), and I'll usually be happy to talk to you if I'm not busy.
+I am also very social! You can find me on [Discord](#main) or [Mastodon](#main), and I'll usually be happy to talk to you if it's something we're both interested in.
 
 - ##### My moirail ♦️ [Madison Madisongs](https://madisongs.carrd.co/) (she/her) and I are like clockwork, working in step almost perfectly.
 
@@ -114,6 +115,9 @@ I met Redact on Twitter, through Exceptional Minge's stupidity. We both correcte
 
 I met him on Twitter. That's all. The origins of Catboy Musical are unknown.`}
           </DescriptionArea>
+        </div>
+        <div className="App alignCenter">
+          <DescriptionArea>{`Blargh.`}</DescriptionArea>
         </div>
       </div>
     </>

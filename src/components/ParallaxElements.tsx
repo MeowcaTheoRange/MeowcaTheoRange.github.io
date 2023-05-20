@@ -11,56 +11,38 @@ var projectArray: Project[] = [
   {
     dir: "/assets/projects/trollcall/",
     fg_max: 1,
-    repeatRules: [["no-repeat", -0.55]],
+    repeatRules: [["no-repeat", -0.8]],
   },
   {
     dir: "/assets/projects/trollcall_next/",
-    fg_max: 0,
-    repeatRules: [["no-repeat"]],
-  },
-  {
-    dir: "/assets/projects/test/",
-    fg_max: 4,
+    fg_max: 6,
     repeatRules: [
       ["repeat"],
       ["no-repeat"],
-      ["repeat-x"],
-      ["repeat-x"],
-      ["repeat-x"],
+      ["no-repeat"],
+      ["no-repeat"],
+      ["no-repeat"],
+      ["no-repeat"],
+      ["no-repeat"],
     ],
   },
   {
-    dir: "/assets/projects/test/",
-    fg_max: 4,
+    dir: "/assets/projects/jellybean/",
+    fg_max: 6,
     repeatRules: [
       ["repeat"],
+      ["no-repeat", -0.5],
+      ["no-repeat", -0.5],
+      ["no-repeat", -0.5],
       ["no-repeat"],
-      ["repeat-x"],
-      ["repeat-x"],
-      ["repeat-x"],
+      ["no-repeat"],
+      ["no-repeat"],
     ],
   },
   {
-    dir: "/assets/projects/test/",
-    fg_max: 4,
-    repeatRules: [
-      ["repeat"],
-      ["no-repeat"],
-      ["repeat-x"],
-      ["repeat-x"],
-      ["repeat-x"],
-    ],
-  },
-  {
-    dir: "/assets/projects/test/",
-    fg_max: 4,
-    repeatRules: [
-      ["repeat"],
-      ["no-repeat"],
-      ["repeat-x"],
-      ["repeat-x"],
-      ["repeat-x"],
-    ],
+    dir: "/assets/projects/fc2/",
+    fg_max: 3,
+    repeatRules: [["repeat"], ["no-repeat"], ["no-repeat"]],
   },
 ];
 
@@ -145,7 +127,7 @@ function ParallaxElements() {
 
     // PARALLAX
 
-    var mousePower = 10;
+    var mousePower = 5;
     var childrenMush = Array.from(container.children);
     var rects: number[][] = [];
     childrenMush.forEach((scrollBox) => {
@@ -173,10 +155,16 @@ function ParallaxElements() {
         Array.from(scrollBox.children as HTMLCollectionOf<HTMLElement>).forEach(
           (parallaxElement, ii) => {
             var myDepth = rects[i][ii];
-            var centerMouseX = (relativeMouseX - 0.5) / 2;
-            var centerMouseY = (relativeMouseY - 0.5) / 2;
-            var mouseEffectY = (centerMouseY * mousePower) / myDepth;
-            var mouseEffectX = (centerMouseX * mousePower) / myDepth;
+            var centerMouseX = 0,
+              centerMouseY = 0,
+              mouseEffectX = 0,
+              mouseEffectY = 0;
+            if (window.matchMedia("(any-hover: hover)").matches) {
+              centerMouseX = (relativeMouseX - 0.5) / 2;
+              centerMouseY = (relativeMouseY - 0.5) / 2;
+              mouseEffectY = (centerMouseY * mousePower) / myDepth;
+              mouseEffectX = (centerMouseX * mousePower) / myDepth;
+            }
             parallaxElement.style.transform = `translate(${Math.floor(
               progressX *
                 scrollBox.clientWidth *
@@ -193,7 +181,10 @@ function ParallaxElements() {
       });
     };
 
-    container.addEventListener("scroll", (ev) => {
+    container.addEventListener("scroll", onScroll);
+
+    function onScroll(ev: Event) {
+      if (container === null) return;
       if (container.scrollLeft < eleWidth) {
         container.scrollLeft =
           container.scrollWidth - eleWidth * scrollAmount - 1;
@@ -205,14 +196,15 @@ function ParallaxElements() {
         container.scrollLeft = eleWidth;
       }
       parallaxContainer();
-    });
+    }
 
     return () => {
       cancelAnimationFrame(interval);
+      container.removeEventListener("scroll", onScroll);
     };
   }, [scrollAmount]);
   var elements = projectArray.map((v, i) => (
-    <div
+    <button
       key={i}
       className="coverImage"
       style={{
@@ -230,7 +222,7 @@ function ParallaxElements() {
         <div
           className="prlx effectImage"
           data-depth={
-            canRepeat[1] ?? (map(i / v.fg_max, 0, 1, -0.9, -0.1) || 0)
+            canRepeat[1] ?? (map(i / v.fg_max, 0, 1, -0.8, -0.1) || 0)
           }
           style={{
             backgroundImage: `url("${v.dir}fg_${i}.png")`,
@@ -240,12 +232,12 @@ function ParallaxElements() {
       ))}
       <div
         className="prlx titleImage"
-        data-depth="0"
+        data-depth="-0.1"
         style={{
           backgroundImage: `url("${v.dir}logo.png")`,
         }}
       ></div>
-    </div>
+    </button>
   ));
 
   return (
