@@ -1,10 +1,13 @@
 import { useRef, useEffect, useState } from "react";
 import "./ParallaxElements.css";
+import DescriptionArea from "./DescriptionArea";
 
 type Project = {
   dir: string;
   fg_max: number;
   repeatRules: [string, number?][];
+  link?: string;
+  about?: string;
 };
 
 var projectArray: Project[] = [
@@ -12,6 +15,14 @@ var projectArray: Project[] = [
     dir: "/assets/projects/trollcall/",
     fg_max: 1,
     repeatRules: [["no-repeat", -0.8]],
+    link: "https://trollcall.xyz/",
+    about: `# TrollCall
+Is it appropriate to say TrollCall is my magnum opus?
+
+Well, of course not, because the redesign's sitting right next to it.
+But I have to admit, this project was really cool. Quick and easy reference sheets for your silly fantrolls. Does that sound good? Well then you'll love TrollCallNext.
+
+I have to thank [Redact](https://karkatdyinginagluetrap.com/@redact) for buying and holding the trollcall.xyz domain for me, it's a huge help.`,
   },
   {
     dir: "/assets/projects/trollcall_next/",
@@ -25,6 +36,11 @@ var projectArray: Project[] = [
       ["no-repeat"],
       ["no-repeat"],
     ],
+    link: "http://discord.trollcall.xyz/",
+    about: `# TrollCall Next
+It's TrollCall, again this time! I keep redesigning this project and I think this could be the final one. It's not finished, but when it's done, it will feature a proper database, authentication, and an API. It'll basically be a proper service.
+
+I'm not sure how I'm gonna host it. Vercel sounds good, so that's why I'm making it in Next.js, which is where the name TrollCall *Next* comes from.`,
   },
   {
     dir: "/assets/projects/jellybean/",
@@ -38,11 +54,23 @@ var projectArray: Project[] = [
       ["no-repeat"],
       ["no-repeat"],
     ],
+    link: "https://meowcatheorange.itch.io/mid-simulator",
+    about: `# JellyBean's Mid-Sim
+Remember those [goddamn skeletons](https://www.youtube.com/watch?v=LWAoYKIu7tg)? Remember how people used to [fucking decimate JellyBean on the internet](https://www.youtube.com/watch?v=-JfXUjFDHIY)? I made a rhythm game about it. Then it quickly veered off into Sonic territory. 
+
+I really didn't know what I was doing with this game, but it was my first succesful rhythm game! I learned a lot from developing JellyBean's Mid-Sim, and I want to do something with it again. Maybe soon.`,
   },
   {
     dir: "/assets/projects/fc2/",
     fg_max: 3,
     repeatRules: [["repeat"], ["no-repeat"], ["no-repeat"]],
+    link: "https://meowcatheorange.github.io/Clock/",
+    about: `# FunnyClock²
+A sequel to something that never needed a sequel - some damn clock application made for schools!
+
+That's all this really is, plus a timer and a checklist. It's not remarkable by any means, but it's also pretty cool for what it's made in!
+
+I wish I could have learned React before making it, though, as it uses and duplicates raw HTML, which is super cringe. It comes with a poplight, though!`,
   },
 ];
 
@@ -113,7 +141,7 @@ function ParallaxElements() {
       loops++;
       var dt = gapTime - prevGapTime;
       prevGapTime = gapTime;
-      if (loops >= 3) {
+      if (loops >= 6) {
         container.scrollLeft += Math.max(
           (0.1 * dt) / window.devicePixelRatio,
           1
@@ -210,6 +238,8 @@ function ParallaxElements() {
       style={{
         backgroundColor: generateRandomColor(),
       }}
+      //@ts-ignore
+      onDoubleClick={() => window.open(v.link, "_blank").focus()}
     >
       <div
         className="prlx effectImage heroImage"
@@ -238,6 +268,9 @@ function ParallaxElements() {
           backgroundImage: `url("${v.dir}logo.png")`,
         }}
       ></div>
+      <div className="description">
+        <DescriptionArea>{v.about ?? ""}</DescriptionArea>
+      </div>
     </button>
   ));
 

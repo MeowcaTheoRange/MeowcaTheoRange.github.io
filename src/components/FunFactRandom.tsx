@@ -71,7 +71,7 @@ function FunFactRandom({ funFacts }: { funFacts: string[] }) {
   useEffect(newFunFact, []);
 
   return (
-    <div className="FunFactRandom">
+    <div className="FunFactRandom DescriptionArea">
       <div className="Header">
         <h1>Fun Fact About Me</h1>
         <span></span>

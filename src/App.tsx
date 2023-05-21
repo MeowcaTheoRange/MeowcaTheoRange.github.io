@@ -4,6 +4,8 @@ import MediaBox from "./components/MediaBox";
 import DescriptionArea from "./components/DescriptionArea";
 import { useState } from "react";
 import FunFactRandom from "./components/FunFactRandom";
+import QuaverPlayer from "./components/QuaverPlayer";
+import QuaverScores from "./components/QuaverScores";
 
 function App() {
   const [isOpen, setIsOpen] = useState(true);
@@ -155,6 +157,12 @@ I met Redact on Twitter, through Exceptional Minge's stupidity. We both correcte
 
 I met him on Twitter. That's all. The origins of Catboy Musical are unknown.`}
           </DescriptionArea>
+        </div>
+        <div className="App">
+          <QuaverPlayer id="108492" />
+          <DescriptionArea>{`I play a bit of *Quaver*. It's a fun pastime. It also helps me calibrate my reflexes! I think. Here are my scores.`}</DescriptionArea>
+          <hr />
+          <QuaverScores id="108492" />
         </div>
       </div>
     </>

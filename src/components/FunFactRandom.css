@@ -1,71 +1,10 @@
 .FunFactRandom {
   width: 100%;
-  height: max-content;
-  padding: 16px 32px;
-  box-sizing: border-box;
-
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  align-items: flex-start;
-  justify-content: flex-start;
   overflow: hidden;
   word-wrap: break-word;
 }
 
-.FunFactRandom * {
-  margin: 0;
-  padding: 0;
-}
-
-.FunFactRandom b,
-.FunFactRandom strong {
-  font-weight: 100;
-}
-
-.FunFactRandom li b,
-.FunFactRandom li strong,
-.FunFactRandom p b,
-.FunFactRandom p strong,
-.FunFactRandom span b,
-.FunFactRandom span strong {
-  font-weight: bold;
-}
-
-.FunFactRandom h1 {
-  font-size: 32px;
-  line-height: 32px;
-}
-
-.FunFactRandom h2 {
-  margin-top: 16px;
-  font-size: 28px;
-  line-height: 28px;
-}
-
-.FunFactRandom h3 {
-  font-size: 24px;
-  line-height: 24px;
-}
-
-.FunFactRandom h4 {
-  font-size: 20px;
-  line-height: 20px;
-}
-
-.FunFactRandom h5 {
-  font-size: 18px;
-  line-height: 18px;
-}
-
-.FunFactRandom h6 {
-  font-size: 16px;
-  line-height: 16px;
-}
-
 .FunFactRandom p {
-  font-size: 16px;
-  line-height: 16px;
   overflow: hidden;
   word-wrap: break-word;
   width: 100%;

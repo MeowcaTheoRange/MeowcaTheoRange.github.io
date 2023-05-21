@@ -1,4 +1,5 @@
 .App {
+  max-width: 1000px;
   width: 100%;
   margin-top: 32px;
   padding: 16px;
@@ -11,6 +12,7 @@
   flex-direction: column;
   align-items: center;
   pointer-events: auto;
+  flex-shrink: 0;
 }
 
 .App button {
@@ -72,6 +74,9 @@
   z-index: 10;
   background: rgba(0, 0, 0, 0.5);
   transition: left 0.25s, padding 0.25s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   /* display: none; */
 }
 

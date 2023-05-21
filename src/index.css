@@ -1,7 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;500;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700;800&display=swap");
 
 * {
-  font-family: "Inconsolata", monospace;
+  font-family: "Space Grotesk", monospace;
 }
 
 body {
