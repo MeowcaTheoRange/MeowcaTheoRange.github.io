@@ -3,20 +3,40 @@ import Profile from "./components/Profile";
 import MediaBox from "./components/MediaBox";
 import DescriptionArea from "./components/DescriptionArea";
 import { useState } from "react";
+import FunFactRandom from "./components/FunFactRandom";
 
 function App() {
   const [isOpen, setIsOpen] = useState(true);
+  const [isFull, setIsFull] = useState(false);
   return (
     <>
       <div
         className="mainContent"
         style={{
-          left: isOpen ? "0" : "max(-100%, -960px)",
+          left: isOpen ? "0" : "-960px",
+          width: isFull ? "100vw" : "",
         }}
       >
-        <button className="hideButton" onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? "<<" : ">>"}
-        </button>
+        <div className="effectButtons">
+          <button
+            className="hideButton"
+            onClick={() => {
+              setIsOpen(!isOpen);
+              setIsFull(false);
+            }}
+          >
+            {isOpen ? "<<" : ">>"}
+          </button>
+          <button
+            className="hideButton fullButton"
+            onClick={() => {
+              setIsFull(!isFull);
+              setIsOpen(true);
+            }}
+          >
+            {isFull ? "|<" : "<>"}
+          </button>
+        </div>
         <div className="App" id="main">
           <Profile
             name="MeowcaTheoRange"
@@ -62,9 +82,29 @@ function App() {
           </div>
         </div>
         <div className="App alignLeft">
-          <DescriptionArea>{`# DO NOT INTERACT IF:
-- Racist, homophobic, all of the ["basic DNI criteria"](https://dni-criteria.carrd.co/) or whatevs (I FUCKING HATE CARRD)
-- You ure overly sexual, ALL of the time.
+          <FunFactRandom
+            funFacts={[
+              "I'm technically ambidextrous! I hold pens with my left hand, yet I use pointing devices with my right hand.",
+              "I use Fedora Linux.",
+              "Spoiler alert: I like *Homestuck*.",
+              "I recommend the artists *bill wurtz*, *GRiZ*, *Jantsen*, *Galantis*, and *Two Door Cinema Club* in that uncertain order.",
+              "My profile picture is Traobi Dunbat. It was drawn by [Dio Dan](https://barmecidebiohazard.tumblr.com/)!",
+              "I'm moirails ♦️ with Madisongs.",
+              "This website is made in React, using **create-react-app** and Typescript.",
+              "I am deathly scared of *Fergalicious*.",
+              "I own a full-color copy of *House of Leaves*!",
+              "Blarg.",
+              "According to the *Hiveswap* *Extended Zodiac*, I am a *Lepio*. That's Leo, *Prospit*, and *Light*.",
+              "This website is inspired by the work of [FlaringK](https://flaringk.github.io/). Check out their [CSS textboxes](https://mspfa.com/?s=41577), they're pretty cool!",
+              "Not to brag or anything, but I'm quite good at rhythm games.",
+              "This fun fact typing animation was inspired by the [Bletchley Park Google easter egg](https://www.google.com/search?q=bletchley+park).",
+            ]}
+          />
+        </div>
+        <div className="App alignLeft">
+          <DescriptionArea>{`# Don't interact if
+- You are racist, homophobic, any of the ["basic DNI criteria"](https://dni-criteria.carrd.co/) or whatevs (I FUCKING HATE CARRD)
+- You are overly sexual, ALL of the time.
 - You try to create small talk in DMs, unless we're friends.
 - You are a series of precarious setups made to work together in a strained environment (e.g. a heavy box on a small desk or a bodged application/tool put into production)`}</DescriptionArea>
         </div>
@@ -99,9 +139,9 @@ I have **ADHD**, which makes it kind of hard to focus on my tasks sometimes, but
 
 I am also very social! You can find me on [Discord](#main) or [Mastodon](#main), and I'll usually be happy to talk to you if it's something we're both interested in.
 
-- ##### My moirail ♦️ [Madison Madisongs](https://madisongs.carrd.co/) (she/her) and I are like clockwork, working in step almost perfectly.
+- ##### My [moirail ♦️](https://mspaintadventures.fandom.com/wiki/Moirallegience) [Madisongs](https://madisongs.carrd.co/) (she/her) and I are like clockwork, working in step almost perfectly.
 
-I met Madison Madisongs in the YouTube comment section of some Rush E remix song. I forgot which, but it was Rush E. Then I joined her Discord server.
+I met Madisongs in the YouTube comment section of some Rush E remix song. I forgot which, but it was Rush E. Then I joined her Discord server.
 
 - ##### I've worked with [RaminDetergent](https://twitter.com/ramindetergent) (she/they) on quite a bit of lore, although we aren't yet sure where to put it. There's a lot.
 
@@ -115,9 +155,6 @@ I met Redact on Twitter, through Exceptional Minge's stupidity. We both correcte
 
 I met him on Twitter. That's all. The origins of Catboy Musical are unknown.`}
           </DescriptionArea>
-        </div>
-        <div className="App alignCenter">
-          <DescriptionArea>{`Blargh.`}</DescriptionArea>
         </div>
       </div>
     </>

@@ -1,9 +1,11 @@
 .Profile {
   display: flex;
+  flex-direction: row;
   padding: 16px;
   align-items: center;
   justify-content: stretch;
   gap: 32px;
+  max-width: 700px;
 }
 
 .Profile .pfp {
@@ -49,5 +51,20 @@
 @media (max-width: 976px) {
   .Profile {
     max-width: 688px;
+  }
+}
+
+@media (max-width: 732px) {
+  .Profile {
+    flex-direction: column;
+  }
+  .Profile .secondary {
+    align-items: center;
+  }
+  .Profile .secondary .name {
+    justify-content: center;
+  }
+  .Profile .secondary .name .title {
+    text-align: center;
   }
 }

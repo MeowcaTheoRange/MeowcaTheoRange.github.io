@@ -1,12 +1,13 @@
 import { ReactNode } from "react";
 import { JsxElement } from "typescript";
 import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 import "./DescriptionArea.css";
 
 function DescriptionArea({ children }: { children: string }) {
   return (
     <div className="DescriptionArea">
-      <ReactMarkdown>{children}</ReactMarkdown>
+      <ReactMarkdown rehypePlugins={[rehypeRaw]}>{children}</ReactMarkdown>
     </div>
   );
 }

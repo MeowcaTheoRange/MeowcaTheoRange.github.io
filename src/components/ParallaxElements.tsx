@@ -224,6 +224,7 @@ function ParallaxElements() {
           data-depth={
             canRepeat[1] ?? (map(i / v.fg_max, 0, 1, -0.8, -0.1) || 0)
           }
+          key={i}
           style={{
             backgroundImage: `url("${v.dir}fg_${i}.png")`,
             backgroundRepeat: canRepeat[0],
