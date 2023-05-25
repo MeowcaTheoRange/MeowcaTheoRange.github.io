@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./QuaverScores.css";
+import BarGraph from "./BarGraph";
 
 function QuaverScores({ id }: { id: string }) {
   const [scores, setScores] = useState([] as any[]);
@@ -22,7 +23,10 @@ function QuaverScores({ id }: { id: string }) {
       {scores.slice(0, 5).map((score, i) => (
         <div className="QuaverScore" key={i}>
           <div className="title">
-            <a href="https://quavergame.com/mapset/map/" target="_blank">
+            <a
+              href={"https://quavergame.com/mapset/map/" + score.map?.id}
+              target="_blank"
+            >
               <span>{score.map?.artist}</span>
               <span> • </span>
               <span>{score.map?.title}</span>
@@ -42,12 +46,30 @@ function QuaverScores({ id }: { id: string }) {
                   {score.mods_string === "None" ? "No mods" : score.mods_string}
                 </span>
                 <span> • </span>
-                <span>{score.total_score}</span>
+                <span>
+                  PR {Math.round(score.performance_rating * 100) / 100}
+                </span>
                 <span> • </span>
-                <span>{Math.round(score.accuracy * 100) / 100}%</span>
+                <span>ACC {Math.round(score.accuracy * 100) / 100}%</span>
               </span>
             </div>
           </div>
+          <h1>Summary</h1>
+          <div className="creationName">
+            <span>COMBO {score.max_combo}</span>
+            <span> • </span>
+            <span>BAD {score.count_miss + score.count_okay}</span>
+          </div>
+          <BarGraph
+            data={[
+              ["MARV", "Marvelous!", score.count_marv],
+              ["PERF", "Perfect", score.count_perf],
+              ["GRT.", "Great", score.count_great],
+              ["GOOD", "Good", score.count_good],
+              ["OKAY", "Okay", score.count_okay],
+              ["MISS", "Misses", score.count_miss],
+            ]}
+          />
         </div>
       ))}
     </div>

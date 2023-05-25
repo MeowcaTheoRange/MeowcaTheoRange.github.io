@@ -1,0 +1,50 @@
+.BarGraph {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  height: 200px;
+  border-bottom: 2px solid #ffddbb;
+  padding: 16px;
+  padding-bottom: 0;
+  box-sizing: border-box;
+}
+
+.BarGraph .barHolder {
+  position: relative;
+  display: inline-flex;
+  align-items: flex-end;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+  width: 5em;
+}
+
+.BarGraph .barHolder .bar {
+  display: inline-flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  overflow: hidden;
+  padding: 0 8px;
+  height: 100%;
+  width: 100%;
+  background-color: #ffddbb;
+  color: #804000;
+  z-index: 2;
+  /* writing-mode: vertical-lr; */
+}
+
+.BarGraph .barHolder .bar span.inBox {
+  padding-bottom: 8px;
+}
+
+.BarGraph .barHolder span.outBox {
+  position: absolute;
+  padding-bottom: 8px;
+  bottom: 0;
+  color: #ffddbb;
+}
