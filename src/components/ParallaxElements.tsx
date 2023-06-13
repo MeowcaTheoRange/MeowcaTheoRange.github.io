@@ -1,6 +1,6 @@
-import { useRef, useEffect, useState } from "react";
-import "./ParallaxElements.css";
+import { useEffect, useRef, useState } from "react";
 import DescriptionArea from "./DescriptionArea";
+import "./ParallaxElements.css";
 
 type Project = {
   dir: string;
@@ -20,9 +20,7 @@ var projectArray: Project[] = [
 Is it appropriate to say TrollCall is my magnum opus?
 
 Well, of course not, because the redesign's sitting right next to it.
-But I have to admit, this project was really cool. Quick and easy reference sheets for your silly fantrolls. Does that sound good? Well then you'll love TrollCallNext.
-
-I have to thank [Redact](https://karkatdyinginagluetrap.com/@redact) for buying and holding the trollcall.xyz domain for me, it's a huge help.`,
+But I have to admit, this project was really cool. Quick and easy reference sheets for your silly fantrolls. Does that sound good? Well then you'll love TrollCallNext.`,
   },
   {
     dir: "/assets/projects/trollcall_next/",
@@ -36,11 +34,11 @@ I have to thank [Redact](https://karkatdyinginagluetrap.com/@redact) for buying 
       ["no-repeat"],
       ["no-repeat"],
     ],
-    link: "http://discord.trollcall.xyz/",
+    link: "https://next.trollcall.xyz/",
     about: `# TrollCall Next
-It's TrollCall, again this time! I keep redesigning this project and I think this could be the final one. It's not finished, but when it's done, it will feature a proper database, authentication, and an API. It'll basically be a proper service.
+It's TrollCall, again this time! I keep redesigning this project and I think this could be the final one. It has a proper database, is hosted on Vercel, and can host a maximum of approximately 20,000 trolls. So, get to trolling!
 
-I'm not sure how I'm gonna host it. Vercel sounds good, so that's why I'm making it in Next.js, which is where the name TrollCall *Next* comes from.`,
+I have to thank [Redact](https://karkatdyinginagluetrap.com/@redact) for buying and holding the trollcall.xyz domain for me, it's a huge help.`,
   },
   {
     dir: "/assets/projects/jellybean/",
@@ -107,19 +105,6 @@ function ParallaxElements() {
     Math.ceil(window.innerWidth / eleWidth) + 1
   );
 
-  // MOUSEPOS
-
-  var mouseX = 0;
-  var mouseY = 0;
-
-  document.addEventListener("mousemove", onMouseUpdate, false);
-  document.addEventListener("mouseenter", onMouseUpdate, false);
-
-  function onMouseUpdate(e: MouseEvent) {
-    mouseX = e.pageX;
-    mouseY = e.pageY;
-  }
-
   function onResize(e?: UIEvent) {
     eleWidth = Math.min(window.innerWidth, 960);
     setScrollAmount(Math.ceil(window.innerWidth / eleWidth) + 1);
@@ -155,7 +140,6 @@ function ParallaxElements() {
 
     // PARALLAX
 
-    var mousePower = 5;
     var childrenMush = Array.from(container.children);
     var rects: number[][] = [];
     childrenMush.forEach((scrollBox) => {
@@ -175,34 +159,17 @@ function ParallaxElements() {
         var progressHeight = scrollBox.clientHeight / window.innerHeight;
         var progressX = progressLeft - 0.5 + progressWidth / 2;
         var progressY = progressTop - 0.5 + progressHeight / 2;
-        var relativeMouseX =
-          mouseX / scrollBox.clientWidth - getRekt.left / scrollBox.clientWidth;
-        var relativeMouseY =
-          mouseY / scrollBox.clientHeight -
-          getRekt.top / scrollBox.clientHeight;
         Array.from(scrollBox.children as HTMLCollectionOf<HTMLElement>).forEach(
           (parallaxElement, ii) => {
             var myDepth = rects[i][ii];
-            var centerMouseX = 0,
-              centerMouseY = 0,
-              mouseEffectX = 0,
-              mouseEffectY = 0;
-            if (window.matchMedia("(any-hover: hover)").matches) {
-              centerMouseX = (relativeMouseX - 0.5) / 2;
-              centerMouseY = (relativeMouseY - 0.5) / 2;
-              mouseEffectY = (centerMouseY * mousePower) / myDepth;
-              mouseEffectX = (centerMouseX * mousePower) / myDepth;
-            }
             parallaxElement.style.transform = `translate(${Math.floor(
               progressX *
                 scrollBox.clientWidth *
-                (myDepth * (window.innerWidth / scrollBox.clientWidth)) +
-                mouseEffectX
+                (myDepth * (window.innerWidth / scrollBox.clientWidth))
             )}px, ${Math.floor(
               progressY *
                 scrollBox.clientHeight *
-                (myDepth * (window.innerWidth / scrollBox.clientWidth)) +
-                mouseEffectY
+                (myDepth * (window.innerWidth / scrollBox.clientWidth))
             )}px)`;
           }
         );
@@ -230,7 +197,7 @@ function ParallaxElements() {
       cancelAnimationFrame(interval);
       container.removeEventListener("scroll", onScroll);
     };
-  }, [scrollAmount]);
+  }, [scrollAmount, eleWidth]);
   var elements = projectArray.map((v, i) => (
     <button
       key={i}

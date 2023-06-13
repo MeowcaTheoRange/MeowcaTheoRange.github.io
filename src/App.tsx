@@ -1,9 +1,9 @@
-import "./App.css";
-import Profile from "./components/Profile";
-import MediaBox from "./components/MediaBox";
-import DescriptionArea from "./components/DescriptionArea";
 import { useState } from "react";
+import "./App.css";
+import DescriptionArea from "./components/DescriptionArea";
 import FunFactRandom from "./components/FunFactRandom";
+import MediaBox from "./components/MediaBox";
+import Profile from "./components/Profile";
 import QuaverPlayer from "./components/QuaverPlayer";
 import QuaverScores from "./components/QuaverScores";
 
@@ -87,10 +87,11 @@ function App() {
           <FunFactRandom
             funFacts={[
               "I'm technically ambidextrous! I hold pens with my left hand, yet I use pointing devices with my right hand.",
-              "I use Fedora Linux.",
-              "Spoiler alert: I like *Homestuck*.",
+              "I use Nobara Linux.",
+              "I have [very good opinions](https://www.youtube.com/watch?v=OF_5EKNX0Eg) on NVIDIA.",
+              'Spoiler alert: I "like" *Homestuck*.',
               "I recommend the artists *bill wurtz*, *GRiZ*, *Jantsen*, *Galantis*, and *Two Door Cinema Club* in that uncertain order.",
-              "My profile picture is Traobi Dunbat. It was drawn by [Dio Dan](https://barmecidebiohazard.tumblr.com/)!",
+              "My profile picture is Traobi Dunbat.",
               "I'm moirails ♦️ with Madisongs.",
               "This website is made in React, using **create-react-app** and Typescript.",
               "I am deathly scared of *Fergalicious*.",
@@ -106,9 +107,20 @@ function App() {
         <div className="App alignLeft">
           <DescriptionArea>{`# Don't interact if
 - You are racist, homophobic, any of the ["basic DNI criteria"](https://dni-criteria.carrd.co/) or whatevs (I FUCKING HATE CARRD)
-- You are overly sexual, ALL of the time.
 - You try to create small talk in DMs, unless we're friends.
-- You are a series of precarious setups made to work together in a strained environment (e.g. a heavy box on a small desk or a bodged application/tool put into production)`}</DescriptionArea>
+- You believe in an extreme political/social divide. (a.k.a, "when you interact with someone, you HAVE TO agree/disagree with them 100% on everything!")`}</DescriptionArea>
+        </div>
+        <div className="App alignLeft">
+          <DescriptionArea>{`# Who do I look up to?
+My beliefs are gathered from a few different sources. Personally, I support the **Right To Repair** movement, I support **trans rights**, and I also support the **freedom of software usage**.
+
+I'm building a world where some of the main characters believe in **anarcho-communism**, although this is not to say I completely support the social movement myself. I'm interested in it!
+
+Anyway, the people I look up to have indeed founded *some of* these beliefs in my head. Some primary examples I can give are:
+## Louis Rossmann [![Rossmann Repair Group](/assets/external/rrg.png)](https://rossmanngroup.com/)
+I learned about Louis Rossmann through the initial [CBC report](https://youtu.be/o2_SZ4tfLns) on Apple overcharging users for simple repair. 
+
+To make a long story short, I found some of his videos where he speaks as a mentor, and I took that advice to heart. He's a cool guy.`}</DescriptionArea>
         </div>
         <div className="App alignLeft">
           <DescriptionArea>
@@ -127,13 +139,13 @@ My opinion on React is that it's pretty great, and it helps me integate HTML wit
 
 I haven't made projects in Haxe for a while, but I would usually use **HaxeUI** or **HaxeFlixel**.
 
-I'm quite good at adapting to new environments, like when I moved TrollCallNext from a local MongoDB instance to Firebase, and I had to adapt all of the code. That wasn't too hard, because I could use the **firebase** and **yup** packages for database management and schema validation respectively.
+I'm quite good at adapting to new environments, like when I started using Next.js to develop TrollCallNext. Keep in mind that I did end up recreating it all over again because I wasn't happy with the finished product, but I must say that paid off well. I'm a bit of a perfectionist.
 
 ## Indecision may or may not be my problem. 
 
 This is my **third** portfolio page! Isn't that insane?
 
-I use Linux, and I'm currently using **Fedora Linux** right now, although that could change. I still have my old install of Ubuntu sitting somewhere on my computer.
+I use Linux, and I'm currently using **Nobara Linux** right now, although that could change. I still have my old install of Ubuntu sitting somewhere on my computer.
 
 ## I'm not great at expressing myself, while being great at expressing myself.
 
