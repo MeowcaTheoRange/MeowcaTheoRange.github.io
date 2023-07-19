@@ -26,16 +26,16 @@
   position: relative;
   left: 32px;
   top: 0;
-  background-color: #0f4;
+  background-color: #f80;
   width: calc(100% - 64px);
   height: calc(100% - 64px);
   max-height: 1080px;
+  border: 2px solid #ffddbb;
+  box-shadow: 0 0 4px #ffddbb;
   border-radius: 32px;
   z-index: 2;
   overflow: hidden;
-  box-shadow: 0 0 32px #0006;
-  transition: width 0.25s, left 0.25s, height 0.25s, border-radius 0.25s,
-    box-shadow 0.25s;
+  transition: width 0.25s, left 0.25s, height 0.25s, border-radius 0.25s;
 }
 
 .ParallaxElements .coverImage .prlx {

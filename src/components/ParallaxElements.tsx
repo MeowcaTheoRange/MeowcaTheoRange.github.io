@@ -17,25 +17,6 @@ var projectArray: Project[] = [
     repeatRules: [["no-repeat", -0.8]],
     link: "https://trollcall.xyz/",
     about: `# TrollCall
-Is it appropriate to say TrollCall is my magnum opus?
-
-Well, of course not, because the redesign's sitting right next to it.
-But I have to admit, this project was really cool. Quick and easy reference sheets for your silly fantrolls. Does that sound good? Well then you'll love TrollCallNext.`,
-  },
-  {
-    dir: "/assets/projects/trollcall_next/",
-    fg_max: 6,
-    repeatRules: [
-      ["repeat"],
-      ["no-repeat"],
-      ["no-repeat"],
-      ["no-repeat"],
-      ["no-repeat"],
-      ["no-repeat"],
-      ["no-repeat"],
-    ],
-    link: "https://next.trollcall.xyz/",
-    about: `# TrollCall Next
 It's TrollCall, again this time! I keep redesigning this project and I think this could be the final one. It has a proper database, is hosted on Vercel, and can host a maximum of approximately 20,000 trolls. So, get to trolling!
 
 I have to thank [Redact](https://karkatdyinginagluetrap.com/@redact) for buying and holding the trollcall.xyz domain for me, it's a huge help.`,

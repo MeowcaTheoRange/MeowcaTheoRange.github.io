@@ -6,8 +6,7 @@
 
 body {
   font-size: 16px;
-  background: #ff7f00;
-  background: linear-gradient(0deg, #804000 0%, #ff8000 100%);
+  background: #804000;
   margin: 0;
   overflow-y: hidden;
   overflow-x: hidden;

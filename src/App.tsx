@@ -13,10 +13,9 @@ function App() {
   return (
     <>
       <div
-        className="mainContent"
+        className={`mainContent ${isFull ? "full" : ""}`}
         style={{
           left: isOpen ? "0" : "-960px",
-          width: isFull ? "100vw" : "",
         }}
       >
         <div className="effectButtons">
@@ -82,6 +81,9 @@ function App() {
               color="ffddbb"
             />
           </div>
+          <DescriptionArea>{`### NOTICE: As of July 18, 2023, I no longer use Twitter. All links to Twitter accounts on this page will instead redirect to <a href="https://nitter.it/about">Nitter</a> or another site if applicable.
+
+If you still want to follow me on a Twitter-esque platform, consider following me on [Mastodon](#main).`}</DescriptionArea>
         </div>
         <div className="App alignLeft">
           <FunFactRandom
@@ -120,7 +122,15 @@ Anyway, the people I look up to have indeed founded *some of* these beliefs in m
 ## Louis Rossmann [![Rossmann Repair Group](/assets/external/rrg.png)](https://rossmanngroup.com/)
 I learned about Louis Rossmann through the initial [CBC report](https://youtu.be/o2_SZ4tfLns) on Apple overcharging users for simple repair. 
 
-To make a long story short, I found some of his videos where he speaks as a mentor, and I took that advice to heart. He's a cool guy.`}</DescriptionArea>
+To make a long story short, I found some of his videos where he speaks as a mentor, and I took that advice to heart. He's a cool guy.
+## Mastodon and the Fediverse [![Join Mastodon](/assets/external/mstdn.svg)](https://joinmastodon.org/)
+The Fediverse is a vast place filled with different servers, each hosting a plethora of people. These servers wok together with an protocol called ActivityPub to federate into one large, decentralized social network.
+
+Mastodon is an example of one piece of software for a server, although there are others! But that's besides the point. The Fediverse has put a set of values in my mind to make sure my own site, TrollCall, is as respectable as possible. **No ads, no trackers, not even a single cookie popup or "join our newsletter" prompt.**
+
+Just simple troll sharing. How do I profit from this? **Donations and generous supporters, of course!** I have none right now, but nonetheless, I have ideas in the future to make TrollCall a great network like the Fediverse - decentralized, trolls are shared between servers, maybe everyone has their own TrollCall server? Ooh, idea! I'll be right back.
+
+OK, but seriously. Mastodon and the Fediverse has been a huge influence in how I design TrollCall, and how I should make websites that respect the user.`}</DescriptionArea>
         </div>
         <div className="App alignLeft">
           <DescriptionArea>
@@ -157,15 +167,21 @@ I am also very social! You can find me on [Discord](#main) or [Mastodon](#main),
 
 I met Madisongs in the YouTube comment section of some Rush E remix song. I forgot which, but it was Rush E. Then I joined her Discord server.
 
-- ##### I've worked with [RaminDetergent](https://twitter.com/ramindetergent) (she/they) on quite a bit of lore, although we aren't yet sure where to put it. There's a lot.
+- ##### I've worked with [RaminDetergent](https://nitter.it/RaminDetergent) (she/they/he) on quite a bit of lore, although we aren't yet sure where to put it. There's a lot.
 
 I met RaminDetergent on Twitter. I forgot specifically where from.
+
+- ##### [hollandLop](https://ko-fi.com/sakurabfields) A.K.A. *sakurabunnyfields* (it/troll/freak) is a good colleague of mine, and it is [RaminDetergent](https://nitter.it/ramindetergent)'s [moirail ♦️](https://mspaintadventures.fandom.com/wiki/Moirallegience)!
+
+It is planned to be the main question builder for TrollCall. Basically, if you're confused on how to design your fantroll, it is there to help. Not directly; it's just the ones making the questions, hopefully better (and less obtuse) than Hussie ever would.
+
+It is also planning to make the entire website pink.
 
 - ##### [redact](https://karkatdyinginagluetrap.com/@redact) (she/they/it) is super fucking cool because she runs [karkatdyinginagluetrap.com](https://karkatdyinginagluetrap.com), a Mastodon instance that I use as my personal instance.
 
 I met Redact on Twitter, through Exceptional Minge's stupidity. We both corrected him, I commented under her post, and then we kinda just clicked. Boom fucking epic.
 
-- ##### [blanknam3d](https://linktr.ee/blanknam3d) (he/him) pissed on my carpet.
+- ##### [blanknam3d](https://linktr.ee/blanknam3d) (it's pronounced "blank named") pissed on my carpet.
 
 I met him on Twitter. That's all. The origins of Catboy Musical are unknown.`}
           </DescriptionArea>
