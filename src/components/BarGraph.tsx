@@ -1,12 +1,11 @@
-import React from "react";
 import "./BarGraph.css";
 
 function BarGraph({ data }: { data: [string, string, number][] }) {
   var maxValue = Math.max(...data.map((x) => x[2]));
   return (
     <div className="BarGraph">
-      {data.map((tuple) => (
-        <div className="barHolder">
+      {data.map((tuple, i) => (
+        <div className="barHolder" key={i}>
           <div
             className="bar"
             style={{

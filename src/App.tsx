@@ -2,6 +2,8 @@ import { useState } from "react";
 import "./App.css";
 import DescriptionArea from "./components/DescriptionArea";
 import FunFactRandom from "./components/FunFactRandom";
+import LastFmPlayer from "./components/LastFmPlayer";
+import LastFmScores from "./components/LastFmScores";
 import MediaBox from "./components/MediaBox";
 import Profile from "./components/Profile";
 import QuaverPlayer from "./components/QuaverPlayer";
@@ -185,6 +187,20 @@ I met Redact on Twitter, through Exceptional Minge's stupidity. We both correcte
 
 I met him on Twitter. That's all. The origins of Catboy Musical are unknown.`}
           </DescriptionArea>
+        </div>
+        <div className="App">
+          <LastFmPlayer
+            user="MeowcaTheoRange"
+            api_key="8f9b0255cc55a19f82d37c22600aff1a"
+          />
+          <DescriptionArea>{`I listen to music on YouTube Music. Technically, this data is gathered from Last.fm, but I don't use it for anything except YouTube Music.
+
+...Maybe some local tracks.`}</DescriptionArea>
+          <hr />
+          <LastFmScores
+            user="MeowcaTheoRange"
+            api_key="8f9b0255cc55a19f82d37c22600aff1a"
+          />
         </div>
         <div className="App">
           <QuaverPlayer id="108492" />

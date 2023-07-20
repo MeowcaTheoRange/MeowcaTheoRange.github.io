@@ -11,9 +11,10 @@
 .Profile .pfp {
   width: 128px;
   height: 128px;
-  border-radius: 32px;
+  border-radius: 16px;
   object-fit: cover;
   border: 2px solid #ffddbb;
+  background-color: #402000;
   box-shadow: 0 0 4px #ffddbb;
   box-sizing: border-box;
 }
