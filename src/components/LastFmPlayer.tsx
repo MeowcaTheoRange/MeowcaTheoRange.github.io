@@ -36,7 +36,7 @@ function LastFmPlayer({ user, api_key }: { user: string; api_key: string }) {
           <div className="name">
             <span className="ipa">
               Played {player.track_count} unique songs out of {player.playcount}{" "}
-              songs total
+              plays total
             </span>
             <span>•</span>
             <span className="ipa">
