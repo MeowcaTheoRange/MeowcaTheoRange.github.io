@@ -55,20 +55,20 @@ That's all this really is, plus a timer and a checklist. It's not remarkable by 
 I wish I could have learned React before making it, though, as it uses and duplicates raw HTML, which is super cringe. It comes with a poplight, though!`,
     primaryColor: "#888",
   },
-  {
-    dir: "/assets/projects/test/",
-    fg_max: 5,
-    repeatRules: [
-      ["repeat-x"],
-      ["no-repeat"],
-      ["repeat"],
-      ["repeat"],
-      ["repeat"],
-    ],
-    link: "https://meowcatheorange.github.io/Clock/",
-    about: `Test`,
-    primaryColor: "#ffdf82",
-  },
+  // {
+  //   dir: "/assets/projects/test/",
+  //   fg_max: 5,
+  //   repeatRules: [
+  //     ["repeat-x"],
+  //     ["no-repeat"],
+  //     ["repeat"],
+  //     ["repeat"],
+  //     ["repeat"],
+  //   ],
+  //   link: "https://meowcatheorange.github.io/Clock/",
+  //   about: `Test`,
+  //   primaryColor: "#ffdf82",
+  // },
 ];
 
 function clamp(input: number, min: number, max: number): number {
