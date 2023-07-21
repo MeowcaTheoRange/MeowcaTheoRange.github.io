@@ -15,6 +15,9 @@
   overflow-y: hidden;
   scrollbar-width: none;
   align-items: center;
+  perspective: 1000px;
+  perspective-origin: center;
+  transform-style: preserve-3D;
 }
 
 .ParallaxElements::-webkit-scrollbar {
@@ -30,8 +33,8 @@
   width: calc(100% - 64px);
   height: calc(100% - 64px);
   max-height: 1080px;
-  border: 2px solid #ffddbb;
-  box-shadow: 0 0 4px #ffddbb;
+  border: 2px solid currentColor;
+  box-shadow: 0 0 4px currentColor;
   border-radius: 32px;
   z-index: 2;
   overflow: hidden;
@@ -78,8 +81,10 @@
 }
 
 .ParallaxElements .coverImage .prlx.effectImage {
-  width: 200%;
+  width: 400%;
+  left: -150%;
   height: 200%;
+  background-position: 50% 50%;
   image-rendering: optimizeSpeed;
   image-rendering: -moz-crisp-edges;
   image-rendering: -o-crisp-edges;
@@ -101,8 +106,8 @@
 }
 
 .ParallaxElements .coverImage .prlx.heroImage {
-  width: 300%;
-  left: -100%;
+  width: 1000%;
+  left: -500%;
   z-index: 1;
   background-repeat: repeat;
 }

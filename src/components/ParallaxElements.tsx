@@ -8,6 +8,7 @@ type Project = {
   repeatRules: [string, number?][];
   link?: string;
   about?: string;
+  primaryColor?: string;
 };
 
 var projectArray: Project[] = [
@@ -20,6 +21,7 @@ var projectArray: Project[] = [
 It's TrollCall, again this time! I keep redesigning this project and I think this could be the final one. It has a proper database, is hosted on Vercel, and can host a maximum of approximately 20,000 trolls. So, get to trolling!
 
 I have to thank [Redact](https://karkatdyinginagluetrap.com/@redact) for buying and holding the trollcall.xyz domain for me, it's a huge help.`,
+    primaryColor: "#ccc",
   },
   {
     dir: "/assets/projects/jellybean/",
@@ -38,6 +40,7 @@ I have to thank [Redact](https://karkatdyinginagluetrap.com/@redact) for buying 
 Remember those [goddamn skeletons](https://www.youtube.com/watch?v=LWAoYKIu7tg)? Remember how people used to [fucking decimate JellyBean on the internet](https://www.youtube.com/watch?v=-JfXUjFDHIY)? I made a rhythm game about it. Then it quickly veered off into Sonic territory. 
 
 I really didn't know what I was doing with this game, but it was my first succesful rhythm game! I learned a lot from developing JellyBean's Mid-Sim, and I want to do something with it again. Maybe soon.`,
+    primaryColor: "#e9b8fe",
   },
   {
     dir: "/assets/projects/fc2/",
@@ -50,6 +53,21 @@ A sequel to something that never needed a sequel - some damn clock application m
 That's all this really is, plus a timer and a checklist. It's not remarkable by any means, but it's also pretty cool for what it's made in!
 
 I wish I could have learned React before making it, though, as it uses and duplicates raw HTML, which is super cringe. It comes with a poplight, though!`,
+    primaryColor: "#888",
+  },
+  {
+    dir: "/assets/projects/test/",
+    fg_max: 5,
+    repeatRules: [
+      ["repeat-x"],
+      ["no-repeat"],
+      ["repeat"],
+      ["repeat"],
+      ["repeat"],
+    ],
+    link: "https://meowcatheorange.github.io/Clock/",
+    about: `Test`,
+    primaryColor: "#ffdf82",
   },
 ];
 
@@ -121,7 +139,7 @@ function ParallaxElements() {
 
     // PARALLAX
 
-    var childrenMush = Array.from(container.children);
+    var childrenMush = Array.from(container.children) as HTMLElement[];
     var rects: number[][] = [];
     childrenMush.forEach((scrollBox) => {
       rects.push(
@@ -134,12 +152,20 @@ function ParallaxElements() {
       childrenMush.forEach((scrollBox, i) => {
         var getRekt = scrollBox.getBoundingClientRect();
         var progressLeft = getRekt.left / window.innerWidth;
-        if (progressLeft < -1 || progressLeft > 1) return;
+        if (progressLeft < -1 || progressLeft > 2) return;
         var progressWidth = scrollBox.clientWidth / window.innerWidth;
+        var ufprogressCenter =
+          (getRekt.left + window.innerWidth / 2 + scrollBox.clientWidth / 2) /
+            window.innerWidth -
+          1;
+        var progressCenter =
+          ufprogressCenter < 0 ? ufprogressCenter * 1.5 : ufprogressCenter;
         var progressTop = getRekt.top / window.innerHeight;
         var progressHeight = scrollBox.clientHeight / window.innerHeight;
         var progressX = progressLeft - 0.5 + progressWidth / 2;
         var progressY = progressTop - 0.5 + progressHeight / 2;
+        var scaleTransform = Math.abs(progressCenter);
+        // scrollBox.style.transform = `translateZ(${scaleTransform * -50}px)`;
         Array.from(scrollBox.children as HTMLCollectionOf<HTMLElement>).forEach(
           (parallaxElement, ii) => {
             var myDepth = rects[i][ii];
@@ -184,7 +210,8 @@ function ParallaxElements() {
       key={i}
       className="coverImage"
       style={{
-        backgroundColor: generateRandomColor(),
+        backgroundColor: v.primaryColor,
+        color: v.primaryColor,
       }}
       //@ts-ignore
       onDoubleClick={() => window.open(v.link, "_blank").focus()}
