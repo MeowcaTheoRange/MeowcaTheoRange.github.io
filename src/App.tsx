@@ -8,6 +8,7 @@ import MediaBox from "./components/MediaBox";
 import Profile from "./components/Profile";
 import QuaverPlayer from "./components/QuaverPlayer";
 import QuaverScores from "./components/QuaverScores";
+import TrollCallProfile from "./components/TrollCallProfile";
 
 function App() {
   const [isOpen, setIsOpen] = useState(true);
@@ -187,6 +188,10 @@ I met Redact on Twitter, through Exceptional Minge's stupidity. We both correcte
 
 I met him on Twitter. That's all. The origins of Catboy Musical are unknown.`}
           </DescriptionArea>
+        </div>
+        <div className="App">
+          <TrollCallProfile name="meowcatheorange" />
+          <DescriptionArea>{`I don't think I ever told anyone I'm the owner of TrollCall on this site. Here's my TrollCall profile to prove it!`}</DescriptionArea>
         </div>
         <div className="App">
           <LastFmPlayer

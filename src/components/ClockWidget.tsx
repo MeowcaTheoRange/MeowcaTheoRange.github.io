@@ -1,13 +1,42 @@
 import { useEffect, useState } from "react";
 import "./ClockWidget.css";
 
+const statusHour = [
+  { name: "Offline", icon: "account_circle_off" }, // 00:00 - 12 AM
+  { name: "Offline", icon: "account_circle_off" }, // 01:00 - 01 AM
+  { name: "Offline", icon: "account_circle_off" }, // 02:00 - 02 AM
+  { name: "Offline", icon: "account_circle_off" }, // 03:00 - 03 AM
+  { name: "Offline", icon: "account_circle_off" }, // 04:00 - 04 AM
+  { name: "Offline", icon: "account_circle_off" }, // 05:00 - 05 AM
+  { name: "Offline", icon: "account_circle_off" }, // 06:00 - 06 AM
+  { name: "Offline", icon: "account_circle_off" }, // 07:00 - 07 AM
+  { name: "Probably Online", icon: "clear_night" }, // 08:00 - 08 AM
+  { name: "Probably Online", icon: "clear_night" }, // 09:00 - 09 AM
+  { name: "Probably Online", icon: "clear_night" }, // 10:00 - 10 AM
+  { name: "Probably Online", icon: "clear_night" }, // 11:00 - 11 AM
+  { name: "Online", icon: "account_circle" }, // 12:00 - 12 PM
+  { name: "Online", icon: "account_circle" }, // 13:00 - 01 PM
+  { name: "Online", icon: "account_circle" }, // 14:00 - 02 PM
+  { name: "Online", icon: "account_circle" }, // 15:00 - 03 PM
+  { name: "Online", icon: "account_circle" }, // 16:00 - 04 PM
+  { name: "Online", icon: "account_circle" }, // 17:00 - 05 PM
+  { name: "Online", icon: "account_circle" }, // 18:00 - 06 PM
+  { name: "Online", icon: "account_circle" }, // 19:00 - 07 PM
+  { name: "Online", icon: "account_circle" }, // 20:00 - 08 PM
+  { name: "Online", icon: "account_circle" }, // 21:00 - 09 PM
+  { name: "Online", icon: "account_circle" }, // 22:00 - 10 PM
+  { name: "Probably Online", icon: "clear_night" }, // 23:00 - 11 AM
+];
+
 function ClockWidget() {
-  var [isHovering, setIsHovering] = useState(false);
+  var [date, setDate] = useState(new Date());
+  const [status, setStatus] = useState(0);
   useEffect(() => {
-    var canvas = document.getElementById("canvas");
+    var timer = setTimeout(() => setDate(new Date()), 1000);
+    var canvas = document.getElementById("canvas") as HTMLCanvasElement;
     var time = document.getElementById("time");
     // @ts-ignore
-    var ctx = canvas.getContext("2d");
+    var ctx: CanvasRenderingContext2D = canvas.getContext("2d");
     // @ts-ignore
     var radius = canvas.height / 2;
     ctx.lineWidth = 2;
@@ -15,11 +44,10 @@ function ClockWidget() {
     ctx.strokeStyle = "#FFDDBB";
     ctx.resetTransform();
     ctx.translate(radius, radius);
-    requestAnimationFrame(drawTime);
-
+    var prevTime = 0;
     function drawTime() {
-      var now = new Date(Date.now());
-      var nowFormatted = now
+      setStatus(date.getHours());
+      var nowFormatted = date
         .toLocaleString(undefined, {
           timeStyle: "medium",
           hour12: false,
@@ -29,8 +57,7 @@ function ClockWidget() {
       var hour = +nowFormatted[0];
       var minute = +nowFormatted[1];
       var second = +nowFormatted[2];
-      // @ts-ignore
-      ctx.clearRect(-radius, -radius, canvas.width, canvas.height);
+      ctx.clearRect(-radius, -radius, canvas?.width, canvas?.height);
 
       ctx.beginPath();
       ctx.arc(0, 0, radius - ctx.lineWidth, 0, 2 * Math.PI);
@@ -46,16 +73,9 @@ function ClockWidget() {
         (minute * Math.PI) / 30 + (second * Math.PI) / (30 * 60),
         radius * 0.8 - ctx.lineWidth
       );
-      if (isHovering)
-        drawHand((second * Math.PI) / 30, radius * 0.7 - ctx.lineWidth);
-      // @ts-ignore
-      time.innerHTML = now.toLocaleString(undefined, {
-        timeStyle: isHovering ? "medium" : "short",
-        dateStyle: isHovering ? "medium" : "short",
-        timeZone: "America/Chicago",
-      });
-      requestAnimationFrame(drawTime);
     }
+
+    drawTime();
 
     function drawHand(pos: number, length: number) {
       ctx.beginPath();
@@ -68,15 +88,23 @@ function ClockWidget() {
     }
   });
   return (
-    <div
-      className="ClockWidget"
-      onMouseEnter={() => setIsHovering(true)}
-      onMouseLeave={() => setIsHovering(false)}
-    >
+    <div className="ClockWidget">
       <canvas id="canvas" width="64" height="64"></canvas>
       <div className="vertical">
-        <span id="time">3:00 PM</span>
+        <span id="time">
+          {date.toLocaleString(undefined, {
+            timeStyle: "short",
+            dateStyle: "short",
+            timeZone: "America/Chicago",
+          })}
+        </span>
         <span id="timezone">Central Time (CT)</span>
+        <span className="nameandicon">
+          <span className="material-symbols-outlined">
+            {statusHour[status].icon}
+          </span>{" "}
+          {statusHour[status].name}
+        </span>
       </div>
     </div>
   );

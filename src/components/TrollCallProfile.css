@@ -1,0 +1,74 @@
+.TrollCallProfile {
+  display: flex;
+  flex-direction: row;
+  padding: 16px;
+  align-items: center;
+  justify-content: stretch;
+  gap: 32px;
+  max-width: 700px;
+}
+
+.TrollCallProfile .pfp {
+  width: 128px;
+  height: 128px;
+  border-radius: 16px;
+  object-fit: cover;
+  border: 2px solid #ffddbb;
+  background-color: #402000;
+  box-shadow: 0 0 4px #ffddbb;
+  box-sizing: border-box;
+}
+
+.TrollCallProfile .secondary {
+  width: 100%;
+  min-height: 128px;
+  padding: 8px 0;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.TrollCallProfile .secondary .name {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px 16px;
+}
+
+.TrollCallProfile .secondary .name .title {
+  font-size: 40px;
+  font-weight: 800;
+  width: 100%;
+}
+
+.TrollCallProfile .secondary .name .ipa {
+  font-size: 16px;
+  font-weight: normal;
+}
+
+/* 976 px */
+
+@media (max-width: 976px) {
+  .TrollCallProfile {
+    max-width: 688px;
+  }
+}
+
+@media (max-width: 732px) {
+  .TrollCallProfile {
+    flex-direction: column;
+  }
+  .TrollCallProfile .secondary {
+    align-items: center;
+  }
+  .TrollCallProfile .secondary .name {
+    justify-content: center;
+  }
+  .TrollCallProfile .secondary .name .title {
+    text-align: center;
+  }
+}

@@ -14,3 +14,11 @@
   font-size: 24px;
   font-weight: 700;
 }
+
+.ClockWidget .nameandicon {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 8px;
+}

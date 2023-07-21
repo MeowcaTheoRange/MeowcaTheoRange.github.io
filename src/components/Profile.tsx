@@ -1,6 +1,5 @@
-import React from "react";
-import "./Profile.css";
 import ClockWidget from "./ClockWidget";
+import "./Profile.css";
 
 function Profile({
   name,
