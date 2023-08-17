@@ -20,7 +20,9 @@ function App() {
   return (
     <>
       <div
-        className={`mainContent ${isFull ? "full" : ""}`}
+        className={`mainContent ${isOpen ? "open" : ""} ${
+          isFull ? "full" : ""
+        }`}
         style={{
           left: isOpen ? "0" : "-960px",
         }}
@@ -33,7 +35,18 @@ function App() {
               setIsFull(false);
             }}
           >
-            {isOpen ? "<<" : ">>"}
+            {isOpen ? "chevron_left" : "chevron_right"}
+          </button>
+          <button
+            className="hideButton upButton"
+            onClick={() => {
+              var mainEle = document.querySelector(
+                ".mainContent"
+              ) as HTMLElement;
+              mainEle.scroll({ top: 0, behavior: "smooth" });
+            }}
+          >
+            arrow_upward
           </button>
           <button
             className="hideButton fullButton"
@@ -42,7 +55,7 @@ function App() {
               setIsOpen(true);
             }}
           >
-            {isFull ? "|<" : "<>"}
+            {isFull ? "fullscreen_exit" : "fullscreen"}
           </button>
         </div>
         <div className="App" id="main">
@@ -103,11 +116,11 @@ I like programming (sometimes), drawing art, designing characters, shaping the i
         </div>
         <div className="App alignLeft bad">
           <DescriptionArea>{`# Please do not interact if
-- You are racist, homophobic, etc. You know... the bad stuff where you hate people for **who they are**\*.
+- You are racist, homophobic, etc. You know... the bad stuff where you hate people for **who they are**\\*.
 - You try to create small talk in DMs, **unless we are friends.**
 - You believe in an extreme political/social divide. (a.k.a, "when you interact with someone, you HAVE TO agree/disagree with them 100% on everything!")
 
-\*No, being racist, homophobic, etc does not constitute equivalence to being a race or a sexuality or whatever. **You can change being racist. You can't change being a race. It's common sense.**`}</DescriptionArea>
+\\*No, being racist, homophobic, etc does not constitute equivalence to being a race or a sexuality or whatever. **You can change being racist. You can't change being a race. It's common sense.**`}</DescriptionArea>
         </div>
         <div className="App alignLeft secret">
           <DescriptionArea>{`# Coming Soon: Blarg Technology
