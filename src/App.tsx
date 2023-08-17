@@ -83,12 +83,6 @@ function App() {
               color={mainColor}
             />
             <MediaBox
-              icon="art-book"
-              link="https://mastodon.art/@trollcall"
-              name="Mastodon (Art)"
-              color={mainColor}
-            />
-            <MediaBox
               icon="github"
               link="https://github.com/MeowcaTheoRange"
               name="GitHub"
