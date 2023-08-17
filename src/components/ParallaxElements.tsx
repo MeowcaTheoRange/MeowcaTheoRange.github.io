@@ -154,17 +154,17 @@ function ParallaxElements() {
         var progressLeft = getRekt.left / window.innerWidth;
         if (progressLeft < -1 || progressLeft > 2) return;
         var progressWidth = scrollBox.clientWidth / window.innerWidth;
-        var ufprogressCenter =
-          (getRekt.left + window.innerWidth / 2 + scrollBox.clientWidth / 2) /
-            window.innerWidth -
-          1;
-        var progressCenter =
-          ufprogressCenter < 0 ? ufprogressCenter * 1.5 : ufprogressCenter;
+        // var ufprogressCenter =
+        //   (getRekt.left + window.innerWidth / 2 + scrollBox.clientWidth / 2) /
+        //     window.innerWidth -
+        //   1;
+        // var progressCenter =
+        //   ufprogressCenter < 0 ? ufprogressCenter * 1.5 : ufprogressCenter;
         var progressTop = getRekt.top / window.innerHeight;
         var progressHeight = scrollBox.clientHeight / window.innerHeight;
         var progressX = progressLeft - 0.5 + progressWidth / 2;
         var progressY = progressTop - 0.5 + progressHeight / 2;
-        var scaleTransform = Math.abs(progressCenter);
+        // var scaleTransform = Math.abs(progressCenter);
         // scrollBox.style.transform = `translateZ(${scaleTransform * -50}px)`;
         Array.from(scrollBox.children as HTMLCollectionOf<HTMLElement>).forEach(
           (parallaxElement, ii) => {

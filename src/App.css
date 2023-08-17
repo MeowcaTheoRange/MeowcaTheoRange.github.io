@@ -3,11 +3,11 @@
   width: 100%;
   margin-top: 32px;
   padding: 16px;
-  background-color: #804000;
-  color: #ffddbb;
-  border: 2px solid #ffddbb;
-  box-shadow: 0 0 4px #ffddbb;
-  border-radius: 16px;
+  border-radius: 4px;
+  background-color: var(--bg-color);
+  color: var(--fg-color);
+  border: 2px solid var(--fg-color);
+  box-shadow: 0 0 4px var(--fg-color);
   box-sizing: border-box;
   overflow: hidden;
   display: flex;
@@ -19,11 +19,11 @@
 
 .App button {
   padding: 0 8px;
-  border-radius: 99999px;
+  border-radius: 4px;
   background-color: transparent;
-  border: 2px solid #ffddbb;
-  box-shadow: 0 0 4px #ffddbb;
-  color: #ffddbb;
+  border: 2px solid var(--fg-color);
+  box-shadow: 0 0 4px var(--fg-color);
+  color: var(--fg-color);
   transition: background-color 0.125s, color 0.125s;
   min-width: 32px;
   height: 32px;
@@ -31,25 +31,24 @@
 }
 
 .App button:hover {
-  background-color: #fdb4;
+  background-color: #0004;
 }
 
 .App button:active {
-  color: #804000;
-  background-color: #fdb;
+  color: var(--bg-color);
+  background-color: var(--fg-color);
 }
 
 .App a {
-  color: #ffddbb;
+  color: currentColor;
 }
 
 .App hr {
   width: 75%;
   margin: 16px auto;
-  border-color: #ffddbb;
+  border-color: var(--fg-color);
   border-width: 1px;
   border-style: solid;
-  border-radius: 2px;
 }
 
 .App .centej {
@@ -59,10 +58,27 @@
   justify-content: center;
   align-items: center;
   align-content: center;
+  gap: 16px;
+  margin: 8px 0;
 }
 
 .App.alignLeft {
   align-items: flex-start;
+}
+
+.App.bad {
+  background-color: var(--bad-bg-color);
+  color: var(--bad-fg-color);
+  border: 2px solid var(--bad-fg-color);
+  box-shadow: 0 0 4px var(--bad-fg-color);
+}
+
+.App.secret {
+  background-color: var(--secret-bg-color);
+  color: var(--secret-fg-color);
+  border: 2px solid var(--secret-fg-color);
+  box-shadow: 0 0 4px var(--secret-fg-color);
+  background-image: var(--secret-effect);
 }
 
 .mainContent {
@@ -106,19 +122,17 @@
   height: 48px;
   width: 48px;
   padding: 8px;
-  border: none;
-  background-color: #804000;
-  box-shadow: 0 0 16px #0004;
-  color: #ffddbb;
-  border: 2px solid #ffddbb;
-  box-shadow: 0 0 4px #ffddbb;
-  border-radius: 24px;
+  border-radius: 4px;
+  background-color: var(--bg-color);
+  color: var(--fg-color);
+  border: 2px solid var(--fg-color);
+  box-shadow: 0 0 4px var(--fg-color);
   font-size: 16px;
   transition: top 0.25s;
 }
 
 .hideButton:hover {
-  background-color: #804000;
+  background-color: var(--bg-color);
 }
 
 /* 976 px */

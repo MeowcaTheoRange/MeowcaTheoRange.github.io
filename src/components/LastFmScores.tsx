@@ -3,6 +3,7 @@ import "./LastFmScores.css";
 
 function LastFmScores({ user, api_key }: { user: string; api_key: string }) {
   const [scores, setScores] = useState([] as any[]);
+  const [open, setOpen] = useState(false);
   async function getScores() {
     setScores(
       (
@@ -19,18 +20,13 @@ function LastFmScores({ user, api_key }: { user: string; api_key: string }) {
   }, []);
   return (
     <div className="LastFmScores">
-      {scores.slice(0, 5).map((score, i) => (
+      {scores.slice(0, open ? -1 : 8).map((score, i) => (
         <div className="LastFmScore" key={i}>
           <div className="horizcont">
             <img alt="PFP" src={score.image?.[2]?.["#text"]} className="pfp" />
             <div className="stats">
               <a href={score.artist?.url} target="_blank" rel="noreferrer">
                 <div className="artistHolder">
-                  <img
-                    alt="PFP"
-                    src={score.artist?.image?.[1]?.["#text"]}
-                    className="artist"
-                  />
                   <span>{score.artist?.name}</span>
                 </div>
               </a>
@@ -57,6 +53,9 @@ function LastFmScores({ user, api_key }: { user: string; api_key: string }) {
           </div>
         </div>
       ))}
+      <button onClick={() => setOpen(!open)}>
+        {open ? "See Less" : "See All"}
+      </button>
     </div>
   );
 }

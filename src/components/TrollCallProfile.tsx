@@ -16,41 +16,27 @@ function TrollCallProfile({ name }: { name: string }) {
     <div className="TrollCallProfile">
       <img alt="PFP" src={player.pfp} className="pfp" />
       <div className="secondary">
+        <span className="title">
+          <a
+            href={"https://trollcall.xyz/user/" + player.name}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {player.name}
+          </a>
+        </span>
         <div className="name">
-          <span className="title">
-            <a
-              href={"https://trollcall.xyz/user/" + player.name}
-              target="_blank"
-              rel="noreferrer"
-            >
-              {player.name}
-            </a>
-          </span>
-          <div className="name">
-            {player.url ? (
-              <>
-                <a href={player.url}>at {new URL(player.url)?.host}</a>
-                <span>•</span>
-              </>
-            ) : (
-              <></>
-            )}
-            <span className="ipa">
-              <a
-                href={
-                  "https://trollcall.xyz/hiveswap/trueSign/" +
-                  player.trueSign?.name
-                }
-              >
-                {player.trueSign?.name} ({player.trueSign?.color.sign} -{" "}
-                {player.trueSign?.color.dates.join("–")})
-              </a>
-            </span>
-            <span>•</span>
-            <span className="ipa">
-              {player.flairs?.map((x: any) => x.name).join(", ")}
-            </span>
-          </div>
+          <a
+            href={
+              "https://trollcall.xyz/hiveswap/trueSign/" + player.trueSign?.name
+            }
+          >
+            {player.trueSign?.name} ({player.trueSign?.color.sign} -{" "}
+            {player.trueSign?.color.dates.join("–")})
+          </a>
+        </div>
+        <div className="name">
+          {player.flairs?.map((x: any) => x.name).join(", ")}
         </div>
       </div>
     </div>

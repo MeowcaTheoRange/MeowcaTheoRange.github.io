@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import ClockWidget from "./components/ClockWidget";
 import DescriptionArea from "./components/DescriptionArea";
 import FunFactRandom from "./components/FunFactRandom";
 import LastFmPlayer from "./components/LastFmPlayer";
@@ -13,6 +14,9 @@ import TrollCallProfile from "./components/TrollCallProfile";
 function App() {
   const [isOpen, setIsOpen] = useState(true);
   const [isFull, setIsFull] = useState(false);
+  var mainColor = getComputedStyle(document.documentElement)
+    .getPropertyValue("--fg-color")
+    .replace("#", "");
   return (
     <>
       <div
@@ -47,46 +51,67 @@ function App() {
             pronunciationMap="miaʊkəθɪoʊreɪnʤ"
             pronunciationMapSimple="meow-cuh-thee-oh-raynj"
             pronouns="he/him"
-            birthday="Aug 7 (Minor)"
+            birthday="Aug 7"
+            age="Minor"
           />
-          <hr />
+          <ClockWidget />
           <div className="centej">
             <MediaBox
               icon="mastodon"
               link="https://karkatdyinginagluetrap.com/@trollcall"
               name="Mastodon"
-              color="ffddbb"
+              color={mainColor}
+            />
+            <MediaBox
+              icon="matrix-logo"
+              iconPack="material"
+              link="https://matrix.to/#/@trollcall:thelbutton.com"
+              name="Matrix"
+              color={mainColor}
             />
             <MediaBox
               icon="art-book"
               link="https://mastodon.art/@trollcall"
               name="Mastodon (Art)"
-              color="ffddbb"
+              color={mainColor}
             />
             <MediaBox
               icon="github"
               link="https://github.com/MeowcaTheoRange"
               name="GitHub"
-              color="ffddbb"
+              color={mainColor}
             />
             <MediaBox
               icon="discord"
               iconPack="sf-black-filled"
               link="http://discord.trollcall.xyz/"
               name="TrollCall Discord"
-              color="ffddbb"
+              color={mainColor}
             />
             <MediaBox
               icon="homestuck"
               iconPack="small"
               link="https://mspfa.com/user/?u=109014333296332953331"
               name="MSPFA"
-              color="ffddbb"
+              color={mainColor}
             />
           </div>
-          <DescriptionArea>{`### NOTICE: As of July 18, 2023, I no longer use Twitter. All links to Twitter accounts on this page will instead redirect to <a href="https://nitter.it/about">Nitter</a> or another site if applicable.
+          <DescriptionArea>{`# Hey, what's up?
+I'm also known as *Theo Range* sometimes in place of a real name, but it should be noted that *Theo* is not my real name.
 
-If you still want to follow me on a Twitter-esque platform, consider following me on [Mastodon](#main).`}</DescriptionArea>
+I like programming (sometimes), drawing art, designing characters, shaping the internet, and obsessing over open-source project specifications.`}</DescriptionArea>
+        </div>
+        <div className="App alignLeft bad">
+          <DescriptionArea>{`# Please do not interact if
+- You are racist, homophobic, etc. You know... the bad stuff where you hate people for **who they are**\*.
+- You try to create small talk in DMs, **unless we are friends.**
+- You believe in an extreme political/social divide. (a.k.a, "when you interact with someone, you HAVE TO agree/disagree with them 100% on everything!")
+
+\*No, being racist, homophobic, etc does not constitute equivalence to being a race or a sexuality or whatever. **You can change being racist. You can't change being a race. It's common sense.**`}</DescriptionArea>
+        </div>
+        <div className="App alignLeft secret">
+          <DescriptionArea>{`# Coming Soon: Blarg Technology
+I'm thinking of adding a blog. I have thoughts, and I want to broadcast them to the world. I just need a host for them first... maybe a custom solution involving static files, or something?`}</DescriptionArea>
         </div>
         <div className="App alignLeft">
           <FunFactRandom
@@ -94,26 +119,17 @@ If you still want to follow me on a Twitter-esque platform, consider following m
               "I'm technically ambidextrous! I hold pens with my left hand, yet I use pointing devices with my right hand.",
               "I use Nobara Linux.",
               "I have [very good opinions](https://www.youtube.com/watch?v=OF_5EKNX0Eg) on NVIDIA.",
-              'Spoiler alert: I "like" *Homestuck*.',
-              "I recommend the artists *bill wurtz*, *GRiZ*, *Jantsen*, *Galantis*, and *Two Door Cinema Club* in that uncertain order.",
-              "My profile picture is Traobi Dunbat.",
+              "I recommend the artists *Tokyo Machine*, *Virtual Riot*, *GRiZ*, *Jantsen*, *bill wurtz*, and *Galantis* in that uncertain order.",
+              "My profile picture is *Tesset Fuema*.",
               "I'm moirails ♦️ with Madisongs.",
               "This website is made in React, using **create-react-app** and Typescript.",
               "I am deathly scared of *Fergalicious*.",
-              "I own a full-color copy of *House of Leaves*!",
               "Blarg.",
-              "According to the *Hiveswap* *Extended Zodiac*, I am a *Lepio*. That's Leo, *Prospit*, and *Light*.",
               "This website is inspired by the work of [FlaringK](https://flaringk.github.io/). Check out their [CSS textboxes](https://mspfa.com/?s=41577), they're pretty cool!",
               "Not to brag or anything, but I'm quite good at rhythm games.",
               "This fun fact typing animation was inspired by the [Bletchley Park Google easter egg](https://www.google.com/search?q=bletchley+park).",
             ]}
           />
-        </div>
-        <div className="App alignLeft">
-          <DescriptionArea>{`# Don't interact if
-- You are racist, homophobic, any of the ["basic DNI criteria"](https://dni-criteria.carrd.co/) or whatevs (I FUCKING HATE CARRD)
-- You try to create small talk in DMs, unless we're friends.
-- You believe in an extreme political/social divide. (a.k.a, "when you interact with someone, you HAVE TO agree/disagree with them 100% on everything!")`}</DescriptionArea>
         </div>
         <div className="App alignLeft">
           <DescriptionArea>{`# Who do I look up to?
@@ -137,11 +153,7 @@ OK, but seriously. Mastodon and the Fediverse has been a huge influence in how I
         </div>
         <div className="App alignLeft">
           <DescriptionArea>
-            {`# Hi! I'm **MeowcaTheoRange**.
-I'm also professionally known as *Theo Range* sometimes, although that's not my actual name.
- 
-*(Want to know my actual name? Too bad. Explode.)*
-## I develop things as a hobby.
+            {`## I develop things as a hobby.
 You can see my projects scrolling by in the background, actually!
 
 Usually, I use JavaScript, but sometimes I also use Typescript if I'm feeling fancy, or Haxe if I'm feeling, y'know, **sane**.
@@ -159,6 +171,16 @@ I'm quite good at adapting to new environments, like when I started using Next.j
 This is my **third** portfolio page! Isn't that insane?
 
 I use Linux, and I'm currently using **Nobara Linux** right now, although that could change. I still have my old install of Ubuntu sitting somewhere on my computer.
+
+What can I say? I like changing stuff, especially when an exodus of cool new ideas brew in my head as I laugh sinisterly, rubbing my hands together.
+
+My website **TrollCall** is currently on revision version 3.5, entitled **TrollCallNotAgain** internally.
+
+Revision 3 was created and then shelved before release, and it was called **TrollCall Next**. Technically, TrollCall 3.5 is also **TrollCall Next**, but revision 3 is *actually* called **TrollCall Next**.
+
+And even then, I am still working on Revision 4!
+
+My point is, I like making stuff over and over and over and over and — once again — over again. It's fun! Sometimes. Occasionally. When I get the time to do so.
 
 ## I'm not great at expressing myself, while being great at expressing myself.
 

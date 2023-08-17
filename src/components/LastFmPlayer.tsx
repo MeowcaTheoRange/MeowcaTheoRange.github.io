@@ -21,28 +21,27 @@ function LastFmPlayer({ user, api_key }: { user: string; api_key: string }) {
     <div className="Profile">
       <img alt="PFP" src={player.image?.[2]?.["#text"]} className="pfp" />
       <div className="secondary">
+        <span className="title">
+          <a href={player.url} target="_blank" rel="noreferrer">
+            {player.realname}
+          </a>
+        </span>
         <div className="name">
-          <span className="title">
-            <a href={player.url} target="_blank" rel="noreferrer">
-              {player.realname}
-            </a>
+          <span className="ipa">
+            Began scrobbling{" "}
+            {new Date(player.registered?.["#text"] * 1000).toLocaleString()}
           </span>
-          <div className="name">
-            <span className="ipa">
-              Began scrobbling{" "}
-              {new Date(player.registered?.["#text"] * 1000).toLocaleString()}
-            </span>
-          </div>
-          <div className="name">
-            <span className="ipa">
-              Played {player.track_count} unique songs out of {player.playcount}{" "}
-              plays total
-            </span>
-            <span>•</span>
-            <span className="ipa">
-              Listened to {player.artist_count} artists total
-            </span>
-          </div>
+        </div>
+        <div className="name">
+          <span className="ipa">
+            Played {player.track_count} unique songs out of {player.playcount}{" "}
+            plays total
+          </span>
+        </div>
+        <div className="name">
+          <span className="ipa">
+            Listened to {player.artist_count} artists total
+          </span>
         </div>
       </div>
     </div>

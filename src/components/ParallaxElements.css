@@ -15,9 +15,6 @@
   overflow-y: hidden;
   scrollbar-width: none;
   align-items: center;
-  perspective: 1000px;
-  perspective-origin: center;
-  transform-style: preserve-3D;
 }
 
 .ParallaxElements::-webkit-scrollbar {
@@ -33,12 +30,12 @@
   width: calc(100% - 64px);
   height: calc(100% - 64px);
   max-height: 1080px;
+  border-radius: 4px;
   border: 2px solid currentColor;
   box-shadow: 0 0 4px currentColor;
-  border-radius: 32px;
   z-index: 2;
   overflow: hidden;
-  transition: width 0.25s, left 0.25s, height 0.25s, border-radius 0.25s;
+  transition: width 0.25s, left 0.25s, height 0.25s;
 }
 
 .ParallaxElements .coverImage .prlx {
@@ -67,7 +64,6 @@
   left: 16px;
   background-color: black;
   color: white;
-  border-radius: 20px;
   text-align: left;
 }
 
@@ -123,7 +119,6 @@
     left: 0;
     width: 100%;
     height: 100%;
-    border-radius: 0;
     box-shadow: none;
   }
 }

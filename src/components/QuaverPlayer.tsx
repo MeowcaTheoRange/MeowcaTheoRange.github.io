@@ -19,42 +19,36 @@ function QuaverPlayer({ id }: { id: string }) {
     <div className="Profile">
       <img alt="PFP" src={player.info?.avatar_url} className="pfp" />
       <div className="secondary">
+        <span className="title">
+          <a
+            href={"https://quavergame.com/user/" + id}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {player.info?.username}
+          </a>
+        </span>
         <div className="name">
-          <span className="title">
-            <a href={"https://quavergame.com/user/" + id} target="_blank">
-              {player.info?.username}
-            </a>
+          <span className="ipa">
+            {player.info?.online
+              ? "Online"
+              : "Last online " +
+                new Date(player.info?.latest_activity).toLocaleString()}
           </span>
-          <div className="name">
-            <span className="ipa">
-              {player.info?.online
-                ? "Online"
-                : "Last online " +
-                  new Date(player.info?.latest_activity).toLocaleString()}
-            </span>
-            <span>•</span>
-            <span className="ipa">
-              Joined {new Date(player.info?.time_registered).toLocaleString()}
-            </span>
-          </div>
-          <div className="name">
-            <span className="ipa">
-              #{player.keys4?.countryRank} in 4K for {player.info?.country}
-            </span>
-            <span>•</span>
-            <span className="ipa">
-              #{player.keys4?.globalRank} in 4K globally
-            </span>
-          </div>
-          <div className="name">
-            <span className="ipa">
-              #{player.keys7?.countryRank} in 7K for {player.info?.country}
-            </span>
-            <span>•</span>
-            <span className="ipa">
-              #{player.keys7?.globalRank} in 7K globally
-            </span>
-          </div>
+        </div>
+        <div className="name">
+          <span className="ipa">
+            Joined {new Date(player.info?.time_registered).toLocaleString()}
+          </span>
+        </div>
+        <div className="name">
+          <span className="ipa">
+            #{player.keys4?.countryRank} in 4K for {player.info?.country}
+          </span>
+          <span>•</span>
+          <span className="ipa">
+            #{player.keys4?.globalRank} in 4K globally
+          </span>
         </div>
       </div>
     </div>

@@ -1,12 +1,28 @@
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700;800&display=swap");
 
+:root {
+  --fg-color: #c080ff;
+  --bg-color: #302040;
+  --bad-fg-color: #ffc0c0;
+  --bad-bg-color: #402020;
+  --secret-fg-color: #ffffc0;
+  --secret-bg-color: #404020;
+  --secret-effect: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 40px,
+    #202010 40px,
+    #202010 80px
+  );
+}
+
 * {
   font-family: "Space Grotesk", monospace;
 }
 
 body {
   font-size: 16px;
-  background: #804000;
+  background: var(--bg-color);
   margin: 0;
   overflow-y: hidden;
   overflow-x: hidden;

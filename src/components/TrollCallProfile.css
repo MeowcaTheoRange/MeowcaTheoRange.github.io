@@ -1,9 +1,10 @@
 .TrollCallProfile {
   display: flex;
   flex-direction: row;
-  padding: 16px;
+  margin: 8px;
+  margin-top: 16px;
   align-items: center;
-  justify-content: stretch;
+  justify-content: center;
   gap: 32px;
   max-width: 700px;
 }
@@ -11,24 +12,24 @@
 .TrollCallProfile .pfp {
   width: 128px;
   height: 128px;
-  border-radius: 16px;
+  border-radius: 4px;
   object-fit: cover;
-  border: 2px solid #ffddbb;
-  background-color: #402000;
-  box-shadow: 0 0 4px #ffddbb;
+  border: 2px solid var(--fg-color);
+  background-color: var(--bg-color);
+  box-shadow: 0 0 4px var(--fg-color);
   box-sizing: border-box;
 }
 
 .TrollCallProfile .secondary {
-  width: 100%;
+  /* width: 100%; */
   min-height: 128px;
   padding: 8px 0;
   box-sizing: border-box;
 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 16px;
+  justify-content: center;
+  gap: 8px;
 }
 
 .TrollCallProfile .secondary .name {
@@ -39,10 +40,11 @@
   gap: 8px 16px;
 }
 
-.TrollCallProfile .secondary .name .title {
+.TrollCallProfile .secondary .title {
   font-size: 40px;
   font-weight: 800;
-  width: 100%;
+  text-transform: uppercase;
+  /* width: 100%; */
 }
 
 .TrollCallProfile .secondary .name .ipa {

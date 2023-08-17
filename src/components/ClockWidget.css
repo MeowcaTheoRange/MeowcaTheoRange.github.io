@@ -1,8 +1,10 @@
 .ClockWidget {
-  height: 64px;
+  /* height: 64px; */
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 16px;
+  margin: 8px;
 }
 .ClockWidget .vertical {
   display: flex;

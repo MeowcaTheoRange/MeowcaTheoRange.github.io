@@ -31,6 +31,10 @@ const statusHour = [
 function ClockWidget() {
   var [date, setDate] = useState(new Date());
   const [status, setStatus] = useState(0);
+  var mainColor = getComputedStyle(document.documentElement).getPropertyValue(
+    "--fg-color"
+  );
+
   useEffect(() => {
     var timer = setTimeout(() => setDate(new Date()), 1000);
     var canvas = document.getElementById("canvas") as HTMLCanvasElement;
@@ -41,7 +45,7 @@ function ClockWidget() {
     var radius = canvas.height / 2;
     ctx.lineWidth = 2;
     ctx.lineCap = "round";
-    ctx.strokeStyle = "#FFDDBB";
+    ctx.strokeStyle = mainColor;
     ctx.resetTransform();
     ctx.translate(radius, radius);
     var prevTime = 0;

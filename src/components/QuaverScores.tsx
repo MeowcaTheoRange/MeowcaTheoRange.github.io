@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import "./QuaverScores.css";
 import BarGraph from "./BarGraph";
+import "./QuaverScores.css";
 
 function QuaverScores({ id }: { id: string }) {
   const [scores, setScores] = useState([] as any[]);
+  const [open, setOpen] = useState(false);
   async function getScores() {
     setScores(
       (
@@ -20,12 +21,13 @@ function QuaverScores({ id }: { id: string }) {
   }, []);
   return (
     <div className="QuaverScores">
-      {scores.slice(0, 5).map((score, i) => (
+      {scores.slice(0, open ? -1 : 5).map((score, i) => (
         <div className="QuaverScore" key={i}>
           <div className="title">
             <a
               href={"https://quavergame.com/mapset/map/" + score.map?.id}
               target="_blank"
+              rel="noreferrer"
             >
               <span>{score.map?.artist}</span>
               <span> • </span>
@@ -64,7 +66,7 @@ function QuaverScores({ id }: { id: string }) {
             data={[
               ["MARV", "Marvelous!", score.count_marv],
               ["PERF", "Perfect", score.count_perf],
-              ["GRT.", "Great", score.count_great],
+              ["GREAT", "Great", score.count_great],
               ["GOOD", "Good", score.count_good],
               ["OKAY", "Okay", score.count_okay],
               ["MISS", "Misses", score.count_miss],
@@ -72,6 +74,9 @@ function QuaverScores({ id }: { id: string }) {
           />
         </div>
       ))}
+      <button onClick={() => setOpen(!open)}>
+        {open ? "See Less" : "See All"}
+      </button>
     </div>
   );
 }

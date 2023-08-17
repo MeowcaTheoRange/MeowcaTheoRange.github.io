@@ -65,20 +65,19 @@
 .LastFmScore .pfp {
   width: 128px;
   height: 128px;
-  border-radius: 16px;
   padding: 16px;
+  border-radius: 4px;
   object-fit: cover;
-  border: 2px solid #ffddbb;
-  background-color: #402000;
-  box-shadow: 0 0 4px #ffddbb;
+  border: 2px solid var(--fg-color);
+  background-color: var(--bg-color);
+  box-shadow: 0 0 4px var(--fg-color);
   box-sizing: border-box;
 }
 
 .LastFmScore .artist {
   width: 32px;
   height: 32px;
-  border-radius: 16px;
   object-fit: cover;
-  background-color: #402000;
+  background-color: var(--bg-color);
   box-sizing: border-box;
 }
