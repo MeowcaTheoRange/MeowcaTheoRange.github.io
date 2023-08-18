@@ -120,11 +120,6 @@ I like programming (sometimes), drawing art, designing characters, shaping the i
 I'm thinking of adding a blog. I have thoughts, and I want to broadcast them to the world. I just need a host for them first... maybe a custom solution involving static files, or something?`}</DescriptionArea>
         </div>
         <div className="App alignLeft">
-          <DescriptionArea>{`# Events
-Events I am going to in the near future. Most are usually in-person.`}</DescriptionArea>
-          <Events url="/events/events.json" />
-        </div>
-        <div className="App alignLeft">
           <FunFactRandom
             funFacts={[
               "I'm technically ambidextrous! I hold pens with my left hand, yet I use pointing devices with my right hand.",
@@ -141,6 +136,11 @@ Events I am going to in the near future. Most are usually in-person.`}</Descript
               "This fun fact typing animation was inspired by the [Bletchley Park Google easter egg](https://www.google.com/search?q=bletchley+park).",
             ]}
           />
+        </div>
+        <div className="App alignLeft">
+          <DescriptionArea>{`# Events
+Events I am going to in the near future. Most are usually in-person.`}</DescriptionArea>
+          <Events url="https://cdn.mtr.codes/events/events.json" />
         </div>
         <div className="App alignLeft">
           <DescriptionArea>{`# Who do I look up to?
@@ -166,7 +166,7 @@ OK, but seriously. Mastodon and the Fediverse has been a huge influence in how I
           <DescriptionArea>{`# Art Gallery
 A quick overview of some of the things I've drawn. It's not all of them, but it's the ones I'm most proud of.`}</DescriptionArea>
         </div>
-        <Gallery url="/gallery/images.json" />
+        <Gallery url="https://cdn.mtr.codes/gallery/images.json" />
         <div className="App alignLeft">
           <DescriptionArea>
             {`## I develop things as a hobby.

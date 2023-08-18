@@ -8,7 +8,7 @@
   justify-content: flex-start;
   box-sizing: border-box;
   padding: 0 16px;
-  padding-top: 16px;
+  margin-top: -8px;
   gap: 16px;
   user-select: none;
 }

@@ -9,6 +9,19 @@ type GalleryIndex = {
   description: string;
 };
 
+type GalleryFile = { base_uri: string; images: GalleryIndex[] };
+
+const examplegalleryFile: GalleryFile = {
+  base_uri: "",
+  images: [
+    {
+      url: "/assets/pfp.png",
+      title: "Loading...",
+      description: "Loading gallery...",
+    },
+  ],
+};
+
 function GalleryPreview({
   image,
   images,
@@ -17,12 +30,12 @@ function GalleryPreview({
   setImage,
 }: {
   image: number;
-  images: GalleryIndex[];
+  images: GalleryFile;
   fullscreen: boolean;
   setFullscreen: (x: boolean) => void;
   setImage: (x: number) => void;
 }) {
-  let currentImage = images[image];
+  let currentImage = images?.images[image] ?? "";
   window.onkeydown = (event: KeyboardEvent) => {
     if (event.key === "ArrowLeft") setImage(image - 1);
     if (event.key === "ArrowRight") setImage(image + 1);
@@ -31,7 +44,7 @@ function GalleryPreview({
   return fullscreen ? (
     <div className="GalleryPreview" onClick={() => setFullscreen(false)}>
       <img
-        src={currentImage.url}
+        src={images.base_uri + currentImage.url}
         title={currentImage.title}
         alt={currentImage.title}
         onClick={(e: React.MouseEvent<HTMLImageElement, MouseEvent>) =>
@@ -50,7 +63,7 @@ function GalleryPreview({
         <button onClick={() => setImage(image + 1)}>chevron_right</button>
         <span className="fw hideUsual">{currentImage.title}</span>
         <div className="pages">
-          {image + 1}/{images.length}
+          {image + 1}/{images.images.length}
         </div>
       </div>
       <div
@@ -84,13 +97,13 @@ function Gallery({ url }: { url: string }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [fullscreen, setFullscreen] = useState(false);
   const [image, setImage] = useState(0);
-  const [images, setImages] = useState([] as GalleryIndex[]);
+  const [images, setImages] = useState(examplegalleryFile as GalleryFile);
   async function getImages() {
     setImages(await (await fetch(url)).json());
   }
   function setImgFunc(number: number) {
-    if (number < 0) number = images.length - 1;
-    else if (number > images.length - 1) number = 0;
+    if (number < 0) number = images.images.length - 1;
+    else if (number > images.images.length - 1) number = 0;
     setImage(number);
   }
   useEffect(() => {
@@ -116,11 +129,11 @@ function Gallery({ url }: { url: string }) {
   return (
     <>
       <div className="Gallery" ref={containerRef}>
-        {images ? (
-          images.map((x, i) => (
+        {images.images ? (
+          images.images.map((x, i) => (
             <img
               key={i}
-              src={x.url}
+              src={images.base_uri + x.url}
               title={x.title + "\nDouble-click to open fullscreen"}
               alt={x.title}
               onDoubleClick={() => openFullscreen(i)}
