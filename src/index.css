@@ -34,3 +34,103 @@ body {
   min-height: 100vh;
   box-sizing: border-box;
 }
+
+/* --- */
+
+ul {
+  margin: 0;
+  padding: 0;
+  margin-left: 16px;
+}
+
+b,
+strong {
+  margin: 0;
+  padding: 0;
+  font-weight: 100;
+}
+
+li b,
+li strong,
+p b,
+p strong,
+span b,
+span strong {
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+}
+
+h1 {
+  margin: 0;
+  padding: 8px;
+  font-size: 32px;
+  line-height: 32px;
+}
+
+h1.underline {
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--fg-color);
+}
+
+h2 {
+  margin: 0;
+  padding: 8px;
+  margin-top: 0;
+  font-size: 28px;
+  line-height: 28px;
+}
+
+h3 {
+  margin: 0;
+  padding: 8px;
+  font-size: 24px;
+  line-height: 24px;
+}
+
+h4 {
+  margin: 0;
+  padding: 4px;
+  font-size: 20px;
+  line-height: 20px;
+}
+
+h5 {
+  margin: 0;
+  padding: 4px;
+  font-size: 18px;
+  line-height: 18px;
+}
+
+h6 {
+  margin: 0;
+  padding: 4px;
+  font-size: 16px;
+  line-height: 16px;
+}
+
+p {
+  margin: 0;
+  padding: 16px 8px;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+/* img {
+  margin: 0;
+  padding: 0;
+  height: 32px;
+  vertical-align: middle;
+} */
+
+a {
+  color: currentColor;
+}
+
+hr {
+  width: 75%;
+  margin: 16px auto;
+  border-color: var(--fg-color);
+  border-width: 1px;
+  border-style: solid;
+}

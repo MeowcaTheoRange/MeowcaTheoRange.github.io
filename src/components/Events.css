@@ -1,0 +1,38 @@
+.Events {
+  width: 100%;
+  max-width: 720px;
+}
+
+.Event {
+  width: 100%;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.Event .title {
+  font-size: 32px;
+  font-weight: 800;
+  width: 100%;
+}
+
+.Event h1 {
+  padding: 0;
+  margin: 0;
+}
+
+.Event .creationName {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px 16px;
+  padding: 8px 0;
+  box-sizing: border-box;
+}
+
+.Event .stats {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}

@@ -2,7 +2,9 @@ import { useState } from "react";
 import "./App.css";
 import ClockWidget from "./components/ClockWidget";
 import DescriptionArea from "./components/DescriptionArea";
+import Events from "./components/Events";
 import FunFactRandom from "./components/FunFactRandom";
+import Gallery from "./components/Gallery";
 import LastFmPlayer from "./components/LastFmPlayer";
 import LastFmScores from "./components/LastFmScores";
 import MediaBox from "./components/MediaBox";
@@ -23,9 +25,6 @@ function App() {
         className={`mainContent ${isOpen ? "open" : ""} ${
           isFull ? "full" : ""
         }`}
-        style={{
-          left: isOpen ? "0" : "-960px",
-        }}
       >
         <div className="effectButtons">
           <button
@@ -121,6 +120,11 @@ I like programming (sometimes), drawing art, designing characters, shaping the i
 I'm thinking of adding a blog. I have thoughts, and I want to broadcast them to the world. I just need a host for them first... maybe a custom solution involving static files, or something?`}</DescriptionArea>
         </div>
         <div className="App alignLeft">
+          <DescriptionArea>{`# Events
+Events I am going to in the near future. Most are usually in-person.`}</DescriptionArea>
+          <Events url="/events/events.json" />
+        </div>
+        <div className="App alignLeft">
           <FunFactRandom
             funFacts={[
               "I'm technically ambidextrous! I hold pens with my left hand, yet I use pointing devices with my right hand.",
@@ -158,6 +162,11 @@ Just simple troll sharing. How do I profit from this? **Donations and generous s
 
 OK, but seriously. Mastodon and the Fediverse has been a huge influence in how I design TrollCall, and how I should make websites that respect the user.`}</DescriptionArea>
         </div>
+        <div className="App alignLeft">
+          <DescriptionArea>{`# Art Gallery
+A quick overview of some of the things I've drawn. It's not all of them, but it's the ones I'm most proud of.`}</DescriptionArea>
+        </div>
+        <Gallery url="/gallery/images.json" />
         <div className="App alignLeft">
           <DescriptionArea>
             {`## I develop things as a hobby.

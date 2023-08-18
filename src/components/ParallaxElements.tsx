@@ -100,6 +100,7 @@ function generateRandomColor() {
 function ParallaxElements() {
   const containerRef = useRef<HTMLDivElement>(null);
   let eleWidth = Math.min(window.innerWidth, 960);
+  let scrollByX = 0;
   const [scrollAmount, setScrollAmount] = useState(
     Math.ceil(window.innerWidth / eleWidth) + 1
   );
@@ -115,6 +116,18 @@ function ParallaxElements() {
   useEffect(() => {
     const container = containerRef.current;
     if (container == null) return;
+
+    // SCROLL BY DRAGGING
+
+    var prevMousePosX = 0;
+    // @ts-ignore
+    container.onmousemove = function (
+      event: React.MouseEvent<HTMLDivElement, MouseEvent>
+    ) {
+      if (event.buttons === 1)
+        container.scrollLeft += prevMousePosX - event.clientX;
+      prevMousePosX = event.clientX;
+    };
 
     // AUTOSCROLL
 
@@ -132,6 +145,11 @@ function ParallaxElements() {
         );
         loops = 0;
       }
+
+      //scrollByX stuff
+
+      container.scrollLeft += scrollByX;
+
       interval = requestAnimationFrame(scrollContainer);
     };
 
@@ -205,6 +223,7 @@ function ParallaxElements() {
       container.removeEventListener("scroll", onScroll);
     };
   }, [scrollAmount, eleWidth]);
+
   var elements = projectArray.map((v, i) => (
     <button
       key={i}

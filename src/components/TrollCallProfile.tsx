@@ -11,7 +11,6 @@ function TrollCallProfile({ name }: { name: string }) {
   useEffect(() => {
     getPlayer();
   }, []);
-  console.log(player);
   return (
     <div className="TrollCallProfile">
       <img alt="PFP" src={player.pfp} className="pfp" />

@@ -1,0 +1,37 @@
+[
+  {
+    "name": "2D Con 2022",
+    "dateStart": "August 25, 2022",
+    "dateEnd": "August 27, 2022",
+    "location": "Minneapolis, MN",
+    "url": "https://2dcon.net/",
+    "completed": true,
+    "postmortem": "It was a good convention! I hope to see the StepManiaX machine there next time, as I would love to play that again!"
+  },
+  {
+    "name": "Origins Game Fair 2023",
+    "dateStart": "June 21, 2023",
+    "dateEnd": "June 23, 2023",
+    "location": "Columbus, OH",
+    "url": "https://www.originsgamefair.com/",
+    "completed": true,
+    "postmortem": "Fun, somewhat. Only participated in two events and one of them was very lame."
+  },
+  {
+    "name": "GDEX 2023",
+    "dateStart": "June 22, 2023",
+    "dateEnd": "June 25, 2023",
+    "location": "Minneapolis, MN",
+    "url": "https://www.thegdex.com/",
+    "completed": true,
+    "postmortem": "Was a surprise convention happening inside of Origins. I liked it!"
+  },
+  {
+    "name": "2D Con 2023",
+    "dateStart": "August 25, 2023",
+    "dateEnd": "August 27, 2023",
+    "location": "Minneapolis, MN",
+    "url": "https://2dcon.net/",
+    "completed": false
+  }
+]
