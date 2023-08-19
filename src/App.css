@@ -178,9 +178,9 @@
 @media (max-width: 960px) {
   .App {
     margin: 0 auto;
-    margin-top: 32px;
+    margin-top: 16px;
     max-width: none;
-    width: calc(100% - 32px);
+    width: 100%;
   }
 
   .mainContent {
