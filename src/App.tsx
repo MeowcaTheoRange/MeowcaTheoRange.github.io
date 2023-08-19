@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import Blog from "./components/Blog";
 import ClockWidget from "./components/ClockWidget";
 import DescriptionArea from "./components/DescriptionArea";
 import Events from "./components/Events";
@@ -19,13 +20,42 @@ function App() {
   var mainColor = getComputedStyle(document.documentElement)
     .getPropertyValue("--fg-color")
     .replace("#", "");
+  // const {
+  //   state: [dialogOpen, setDialogOpen],
+  //   jsx: DialogJSX,
+  // } = Dialog({
+  //   title: "Hello, world!",
+  //   children: `Hello! My content is really\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally long.`,
+  //   header: "August 18, 2023",
+  //   underHeader: "by MeowcaTheoRange",
+  //   purpose: "Blog",
+  // });
   return (
     <>
+      {/* {DialogJSX} */}
       <div
         className={`mainContent ${isOpen ? "open" : ""} ${
           isFull ? "full" : ""
         }`}
       >
+        {/* <div className="devButtons">
+          <button
+            className="hideButton"
+            onClick={() => {
+              setDialogOpen(true);
+            }}
+          >
+            preview
+          </button>
+          <button
+            className="hideButton"
+            onClick={() => {
+              setDialogTwoOpen(true);
+            }}
+          >
+            preview
+          </button>
+        </div> */}
         <div className="effectButtons">
           <button
             className="hideButton"
@@ -109,15 +139,9 @@ I like programming (sometimes), drawing art, designing characters, shaping the i
         </div>
         <div className="App alignLeft bad">
           <DescriptionArea>{`# Please do not interact if
-- You are racist, homophobic, etc. You know... the bad stuff where you hate people for **who they are**\\*.
+- You are racist, homophobic, etc. You know... the bad stuff where you hate people for **who they are**.
 - You try to create small talk in DMs, **unless we are friends.**
-- You believe in an extreme political/social divide. (a.k.a, "when you interact with someone, you HAVE TO agree/disagree with them 100% on everything!")
-
-\\*No, being racist, homophobic, etc does not constitute equivalence to being a race or a sexuality or whatever. **You can change being racist. You can't change being a race. It's common sense.**`}</DescriptionArea>
-        </div>
-        <div className="App alignLeft secret">
-          <DescriptionArea>{`# Coming Soon: Blarg Technology
-I'm thinking of adding a blog. I have thoughts, and I want to broadcast them to the world. I just need a host for them first... maybe a custom solution involving static files, or something?`}</DescriptionArea>
+- You believe in an extreme political/social divide. (a.k.a, "when you interact with someone, you HAVE TO agree/disagree with them 100% on everything!")`}</DescriptionArea>
         </div>
         <div className="App alignLeft">
           <FunFactRandom
@@ -130,12 +154,16 @@ I'm thinking of adding a blog. I have thoughts, and I want to broadcast them to 
               "I'm moirails ♦️ with Madisongs.",
               "This website is made in React, using **create-react-app** and Typescript.",
               "I am deathly scared of *Fergalicious*.",
-              "Blarg.",
               "This website is inspired by the work of [FlaringK](https://flaringk.github.io/). Check out their [CSS textboxes](https://mspfa.com/?s=41577), they're pretty cool!",
               "Not to brag or anything, but I'm quite good at rhythm games.",
               "This fun fact typing animation was inspired by the [Bletchley Park Google easter egg](https://www.google.com/search?q=bletchley+park).",
             ]}
           />
+        </div>
+        <div className="App alignLeft">
+          <DescriptionArea>{`# Blog
+A place where I can talk about stuff I've done, or whatever. Might cause a lot of network noise if opened!`}</DescriptionArea>
+          <Blog url="https://cdn.mtr.codes/blog/blogs.json" />
         </div>
         <div className="App alignLeft">
           <DescriptionArea>{`# Events

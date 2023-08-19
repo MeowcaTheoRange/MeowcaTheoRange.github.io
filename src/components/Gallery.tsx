@@ -9,42 +9,28 @@ type GalleryIndex = {
   description: string;
 };
 
-type GalleryFile = { base_uri: string; images: GalleryIndex[] };
-
-const examplegalleryFile: GalleryFile = {
-  base_uri: "",
-  images: [
-    {
-      url: "/assets/pfp.png",
-      title: "Loading...",
-      description: "Loading gallery...",
-    },
-  ],
-};
+type GalleryFile = { base_uri: string; image_uri: string; images: string[] };
 
 function GalleryPreview({
   image,
-  images,
+  base_uri,
+  base_image_uri,
   fullscreen,
-  setFullscreen,
-  setImage,
 }: {
-  image: number;
-  images: GalleryFile;
-  fullscreen: boolean;
-  setFullscreen: (x: boolean) => void;
-  setImage: (x: number) => void;
+  image: GalleryIndex;
+  base_uri: string;
+  base_image_uri: string;
+  fullscreen: [boolean, (x: boolean) => void];
 }) {
-  let currentImage = images?.images[image] ?? "";
+  const [fs, setFs] = fullscreen;
+  let currentImage = image;
   window.onkeydown = (event: KeyboardEvent) => {
-    if (event.key === "ArrowLeft") setImage(image - 1);
-    if (event.key === "ArrowRight") setImage(image + 1);
-    if (event.key === "Escape") setFullscreen(false);
+    if (event.key === "Escape") setFs(false);
   };
-  return fullscreen ? (
-    <div className="GalleryPreview" onClick={() => setFullscreen(false)}>
+  return fs ? (
+    <div className="GalleryPreview" onClick={() => setFs(false)}>
       <img
-        src={images.base_uri + currentImage.url}
+        src={base_image_uri + currentImage.url}
         title={currentImage.title}
         alt={currentImage.title}
         onClick={(e: React.MouseEvent<HTMLImageElement, MouseEvent>) =>
@@ -58,13 +44,8 @@ function GalleryPreview({
           e.stopPropagation()
         }
       >
-        <button onClick={() => setFullscreen(false)}>close</button>
-        <button onClick={() => setImage(image - 1)}>chevron_left</button>
-        <button onClick={() => setImage(image + 1)}>chevron_right</button>
+        <button onClick={() => setFs(false)}>close</button>
         <span className="fw hideUsual">{currentImage.title}</span>
-        <div className="pages">
-          {image + 1}/{images.images.length}
-        </div>
       </div>
       <div
         className="bottomSheetHolder"
@@ -93,18 +74,46 @@ ${currentImage.description}`}</DescriptionArea>
   );
 }
 
+function Image({
+  imagename,
+  base_uri,
+  base_image_uri,
+  screenControls,
+}: {
+  imagename: string;
+  base_uri: string;
+  base_image_uri: string;
+  screenControls: (x: GalleryIndex) => void;
+}) {
+  const [image, setImage] = useState({} as GalleryIndex);
+  async function getImage() {
+    setImage(await (await fetch(base_uri + imagename + ".json")).json());
+  }
+  useEffect(() => {
+    getImage();
+  }, [imagename]);
+  return image.title ? (
+    <img
+      src={base_image_uri + image.url}
+      title={image.title + "\nDouble-click to open fullscreen"}
+      alt={image.title}
+      onDoubleClick={() => screenControls(image)}
+      draggable="false"
+    />
+  ) : (
+    <></>
+  );
+}
+
 function Gallery({ url }: { url: string }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [fullscreen, setFullscreen] = useState(false);
-  const [image, setImage] = useState(0);
-  const [images, setImages] = useState(examplegalleryFile as GalleryFile);
+  const [image, setImage] = useState({} as GalleryIndex);
+  const [images, setImages] = useState({} as GalleryFile);
+  const minOpenness = 5;
+  const [openness, setOpenness] = useState(0);
   async function getImages() {
     setImages(await (await fetch(url)).json());
-  }
-  function setImgFunc(number: number) {
-    if (number < 0) number = images.images.length - 1;
-    else if (number > images.images.length - 1) number = 0;
-    setImage(number);
   }
   useEffect(() => {
     getImages();
@@ -121,36 +130,57 @@ function Gallery({ url }: { url: string }) {
       prevMousePosX = event.clientX;
     };
   }, []);
-  function openFullscreen(i: number) {
+  function openFullscreen(image: GalleryIndex) {
     setFullscreen(true);
-    setImgFunc(i);
+    setImage(image);
   }
 
   return (
     <>
-      <div className="Gallery" ref={containerRef}>
+      <div className="GalleryButtons">
+        <button
+          className="special_disabled"
+          onClick={() => setOpenness(openness - minOpenness)}
+          disabled={openness <= 0}
+        >
+          {openness <= minOpenness ? "Close" : "See Less"}
+        </button>
+        <button
+          className="special_disabled"
+          onClick={() => setOpenness(openness + minOpenness)}
+          disabled={openness >= (images.images?.length ?? 0)}
+        >
+          {openness <= 0 ? "Open" : "See More"}
+        </button>
+      </div>
+      <div
+        className={`Gallery ${openness <= 0 ? "closed" : ""}`}
+        ref={containerRef}
+      >
         {images.images ? (
-          images.images.map((x, i) => (
-            <img
-              key={i}
-              src={images.base_uri + x.url}
-              title={x.title + "\nDouble-click to open fullscreen"}
-              alt={x.title}
-              onDoubleClick={() => openFullscreen(i)}
-              draggable="false"
+          <>
+            {images.images
+              .slice(openness - minOpenness, openness)
+              .map((x, i) => (
+                <Image
+                  key={i}
+                  imagename={x}
+                  base_uri={images.base_uri}
+                  base_image_uri={images.image_uri}
+                  screenControls={openFullscreen}
+                />
+              ))}
+            <GalleryPreview
+              base_uri={images.base_uri}
+              base_image_uri={images.image_uri}
+              image={image}
+              fullscreen={[fullscreen, setFullscreen]}
             />
-          ))
+          </>
         ) : (
           <></>
         )}
       </div>
-      <GalleryPreview
-        image={image}
-        fullscreen={fullscreen}
-        setFullscreen={setFullscreen}
-        images={images}
-        setImage={setImgFunc}
-      />
     </>
   );
 }
