@@ -129,3 +129,99 @@ hr {
   border-width: 1px;
   border-style: solid;
 }
+
+button,
+input[type="submit"] {
+  padding: 0 8px;
+  border-radius: 4px;
+  background-color: transparent;
+  border: 2px solid var(--fg-color);
+  box-shadow: 0 0 4px var(--fg-color);
+  color: var(--fg-color);
+  transition: background-color 0.125s, color 0.125s;
+  min-width: 32px;
+  height: 32px;
+  font-size: 16px;
+}
+
+button:not(:disabled):not(.nohover):hover,
+input[type="submit"]:not(:disabled):not(.nohover):hover {
+  background-color: #0004;
+}
+
+button:not(:disabled):active,
+input[type="submit"]:not(:disabled):active {
+  color: var(--bg-color);
+  background-color: var(--fg-color);
+}
+
+button:disabled,
+input[type="submit"]:disabled {
+  color: var(--bad-fg-color);
+  background-color: var(--bad-bg-color);
+  border: 2px solid var(--bad-fg-color);
+  box-shadow: 0 0 4px var(--bad-fg-color);
+}
+
+button.special_disabled:disabled,
+input[type="submit"].special_disabled:disabled {
+  background-color: transparent;
+  border: 2px solid var(--fg-color);
+  box-shadow: 0 0 4px var(--fg-color);
+  color: var(--fg-color);
+  opacity: 0.5;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+textarea {
+  padding: 4px;
+  border-radius: 4px;
+  background-color: transparent;
+  border: 2px solid var(--fg-color);
+  box-shadow: 0 0 4px var(--fg-color);
+  color: var(--fg-color);
+  transition: background-color 0.125s, color 0.125s;
+  font-size: 16px;
+}
+
+input[type="text"]:not(:disabled):not(.nohover):hover,
+input[type="password"]:not(:disabled):not(.nohover):hover,
+input[type="date"]:not(:disabled):not(.nohover):hover,
+textarea:not(:disabled):not(.nohover):hover {
+  background-color: #0004;
+}
+
+input[type="text"]:not(:disabled):active,
+input[type="text"]:not(:disabled):focus,
+input[type="password"]:not(:disabled):active,
+input[type="password"]:not(:disabled):focus,
+input[type="date"]:not(:disabled):active,
+input[type="date"]:not(:disabled):focus,
+textarea:not(:disabled):active,
+textarea:not(:disabled):focus {
+  color: var(--fg-color);
+  background-color: var(--bg-color);
+}
+
+input[type="text"]:disabled,
+input[type="password"]:disabled,
+input[type="date"]:disabled,
+textarea:disabled {
+  color: var(--bad-fg-color);
+  background-color: var(--bad-bg-color);
+  border: 2px solid var(--bad-fg-color);
+  box-shadow: 0 0 4px var(--bad-fg-color);
+}
+
+input[type="text"].special_disabled:disabled,
+input[type="password"].special_disabled:disabled,
+input[type="date"].special_disabled:disabled,
+textarea.special_disabled:disabled {
+  background-color: transparent;
+  border: 2px solid var(--fg-color);
+  box-shadow: 0 0 4px var(--fg-color);
+  color: var(--fg-color);
+  opacity: 0.5;
+}

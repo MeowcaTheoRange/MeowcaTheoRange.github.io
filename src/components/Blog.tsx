@@ -2,6 +2,7 @@
 /* Someday, optimize for accessibility. */
 import { useEffect, useRef, useState } from "react";
 import "./Blog.css";
+import DescriptionArea from "./DescriptionArea";
 import Dialog from "./Dialog";
 
 type BlogIndex = {
@@ -40,7 +41,7 @@ function BlogIndexDisplay({
                   "Published " + new Date(blogidx.date).toLocaleDateString(),
                 title: blogidx.title,
                 underHeader: "by " + blogidx.author,
-                children: blogidx.content,
+                children: <DescriptionArea>{blogidx.content}</DescriptionArea>,
                 purpose: "Blog",
               });
               console.log(blogidx);
@@ -75,7 +76,7 @@ function Blog({ url }: { url: string }) {
   }, [page]);
   const dialogControls = Dialog({
     title: "",
-    children: ``,
+    children: <></>,
     header: "",
     underHeader: "",
     purpose: "Blog",
@@ -99,7 +100,7 @@ function Blog({ url }: { url: string }) {
           <button
             className="special_disabled material-symbols-outlined"
             onClick={() => setPage(page + 1)}
-            disabled={stopUpdating.current}
+            disabled={stopUpdating.current || blog.length < 5}
           >
             expand_more
           </button>

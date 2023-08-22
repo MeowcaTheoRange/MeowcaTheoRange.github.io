@@ -1,0 +1,23 @@
+.AddNew .buttons {
+  padding: 8px 8px;
+  padding-top: 0;
+}
+
+.AddNew .buttons button {
+  /* width: 100%; */
+}
+
+.AddNew .formm {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 8px;
+  padding-top: 0;
+}
+
+.AddNew .formm label {
+  margin: 4px 0;
+}
+.AddNew .formm input[type="submit"] {
+  margin-top: 16px;
+}

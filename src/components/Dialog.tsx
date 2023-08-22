@@ -1,10 +1,9 @@
 import { useState } from "react";
-import DescriptionArea from "./DescriptionArea";
 import "./Dialog.css";
 
 function Dialog(content: {
   title: string;
-  children: string;
+  children: React.ReactNode;
   header?: string;
   underHeader?: string;
   purpose?: string;
@@ -41,7 +40,7 @@ function Dialog(content: {
           )}
           <h1>{cont.title}</h1>
           {cont.underHeader ? <h6>{cont.underHeader}</h6> : <></>}
-          <DescriptionArea>{cont.children}</DescriptionArea>
+          {cont.children}
         </div>
       </div>
     ) : (

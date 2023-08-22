@@ -81,7 +81,7 @@ function Events({ url }: { url: string }) {
         <button
           className="special_disabled material-symbols-outlined"
           onClick={() => setPage(page + 1)}
-          disabled={stopUpdating.current}
+          disabled={stopUpdating.current || events.length < 5}
         >
           expand_more
         </button>

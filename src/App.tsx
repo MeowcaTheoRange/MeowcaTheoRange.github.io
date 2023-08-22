@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import AddNew from "./components/AddNew";
 import Blog from "./components/Blog";
 import ClockWidget from "./components/ClockWidget";
 import DescriptionArea from "./components/DescriptionArea";
@@ -20,45 +21,17 @@ function App() {
   var mainColor = getComputedStyle(document.documentElement)
     .getPropertyValue("--fg-color")
     .replace("#", "");
-  // const {
-  //   state: [dialogOpen, setDialogOpen],
-  //   jsx: DialogJSX,
-  // } = Dialog({
-  //   title: "Hello, world!",
-  //   children: `Hello! My content is really\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally\n\nreally long.`,
-  //   header: "August 18, 2023",
-  //   underHeader: "by MeowcaTheoRange",
-  //   purpose: "Blog",
-  // });
   return (
     <>
-      {/* {DialogJSX} */}
+      <AddNew />
       <div
         className={`mainContent ${isOpen ? "open" : ""} ${
           isFull ? "full" : ""
         }`}
       >
-        {/* <div className="devButtons">
-          <button
-            className="hideButton"
-            onClick={() => {
-              setDialogOpen(true);
-            }}
-          >
-            preview
-          </button>
-          <button
-            className="hideButton"
-            onClick={() => {
-              setDialogTwoOpen(true);
-            }}
-          >
-            preview
-          </button>
-        </div> */}
         <div className="effectButtons">
           <button
-            className="hideButton"
+            className="hideButton nohover"
             onClick={() => {
               setIsOpen(!isOpen);
               setIsFull(false);
@@ -67,7 +40,7 @@ function App() {
             {isOpen ? "chevron_left" : "chevron_right"}
           </button>
           <button
-            className="hideButton upButton"
+            className="hideButton upButton nohover"
             onClick={() => {
               var mainEle = document.querySelector(
                 ".mainContent"
@@ -78,7 +51,7 @@ function App() {
             arrow_upward
           </button>
           <button
-            className="hideButton fullButton"
+            className="hideButton fullButton nohover"
             onClick={() => {
               setIsFull(!isFull);
               setIsOpen(true);
