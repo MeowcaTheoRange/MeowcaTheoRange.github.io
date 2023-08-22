@@ -13,16 +13,11 @@
   user-select: none;
 }
 
-.Gallery.closed {
-  min-height: 0;
-  padding: 0;
-  margin: 0;
-}
-
 .Gallery img {
   height: 100%;
   user-select: none;
   transition: filter 0.125s;
+  border-radius: 4px;
 }
 
 .Gallery img:hover {

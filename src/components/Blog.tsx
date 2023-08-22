@@ -17,27 +17,18 @@ type Blogs = {
 };
 
 function BlogIndexDisplay({
-  main_uri,
-  blog_uri,
+  blogidx,
   dialogControls,
 }: {
-  main_uri: string;
-  blog_uri: string;
+  blogidx: BlogIndex;
   dialogControls: any;
 }) {
-  const [blog, setBlog] = useState({} as BlogIndex);
   const [open, setOpen] = useState(false);
-  async function getBlog() {
-    setBlog(await (await fetch(main_uri + blog_uri + ".json")).json());
-  }
   const {
     state: [_, setDialogOpen],
     content: [__, setDialogContent],
   } = dialogControls;
-  useEffect(() => {
-    getBlog();
-  }, [blog_uri]);
-  return blog.title ? (
+  return (
     <div className="BlogIndex">
       <div className="stats">
         <div className="title">
@@ -45,42 +36,41 @@ function BlogIndexDisplay({
             href="#"
             onClick={() => {
               setDialogContent({
-                header: blog.date,
-                title: blog.title,
-                underHeader: "by " + blog.author,
-                children: blog.content,
+                header:
+                  "Published " + new Date(blogidx.date).toLocaleDateString(),
+                title: blogidx.title,
+                underHeader: "by " + blogidx.author,
+                children: blogidx.content,
                 purpose: "Blog",
               });
-              console.log(blog);
+              console.log(blogidx);
               setDialogOpen(true);
               return false;
             }}
           >
-            <span>{blog.title}</span>
+            <span>{blogidx.title}</span>
           </a>
         </div>
         <div className="creationName">
-          <span>by {blog.author}</span>
+          <span>by {blogidx.author}</span>
           <span> • </span>
-          <span>{blog.date}</span>
+          <span>Published {new Date(blogidx.date).toLocaleDateString()}</span>
         </div>
       </div>
     </div>
-  ) : (
-    <></>
   );
 }
 
 function Blog({ url }: { url: string }) {
-  const [blog, setBlog] = useState({} as Blogs);
-  const minOpenness = 5;
-  const [openness, setOpenness] = useState(0);
+  const [blog, setBlog] = useState([] as BlogIndex[]);
+  const [page, setPage] = useState(0);
   async function getBlog() {
-    setBlog(await (await fetch(url)).json());
+    setBlog(await (await fetch(url + page)).json());
+    // if (blog.length === 0) setOpenness(openness - 1);
   }
   useEffect(() => {
     getBlog();
-  }, []);
+  }, [page]);
   const dialogControls = Dialog({
     title: "",
     children: ``,
@@ -92,34 +82,32 @@ function Blog({ url }: { url: string }) {
     <>
       {dialogControls.jsx}
       <div className="Blog">
-        {blog.blog_uris ? (
-          blog.blog_uris
-            .slice(openness - minOpenness, openness)
-            .map((uri, i) => (
-              <BlogIndexDisplay
-                key={i}
-                main_uri={blog.main_uri ?? ""}
-                blog_uri={uri}
-                dialogControls={dialogControls}
-              />
-            ))
+        {blog[0] ? (
+          blog.map((blogidx, i) => (
+            <BlogIndexDisplay
+              key={i}
+              blogidx={blogidx}
+              dialogControls={dialogControls}
+            />
+          ))
         ) : (
           <></>
         )}
         <div className="buttons">
           <button
             className="special_disabled"
-            onClick={() => setOpenness(openness - minOpenness)}
-            disabled={openness <= 0}
+            onClick={() => setPage(page - 1)}
+            disabled={page <= 0}
           >
-            {openness <= minOpenness ? "Close" : "See Less"}
+            See Less
           </button>
+          <button disabled>Page {page}</button>
           <button
             className="special_disabled"
-            onClick={() => setOpenness(openness + minOpenness)}
-            disabled={openness >= (blog.blog_uris?.length ?? 0)}
+            onClick={() => setPage(page + 1)}
+            disabled={blog.length < 5}
           >
-            {openness <= 0 ? "Open" : "See More"}
+            See More
           </button>
         </div>
       </div>

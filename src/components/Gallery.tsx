@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import DescriptionArea from "./DescriptionArea";
 import "./Gallery.css";
 
 type GalleryIndex = {
@@ -7,32 +6,28 @@ type GalleryIndex = {
   characters?: [string, string?][];
   title: string;
   description: string;
+  date: string;
 };
-
-type GalleryFile = { base_uri: string; image_uri: string; images: string[] };
 
 function GalleryPreview({
   image,
-  base_uri,
-  base_image_uri,
+  image_url,
   fullscreen,
 }: {
   image: GalleryIndex;
-  base_uri: string;
-  base_image_uri: string;
+  image_url: string;
   fullscreen: [boolean, (x: boolean) => void];
 }) {
   const [fs, setFs] = fullscreen;
-  let currentImage = image;
   window.onkeydown = (event: KeyboardEvent) => {
     if (event.key === "Escape") setFs(false);
   };
   return fs ? (
     <div className="GalleryPreview" onClick={() => setFs(false)}>
       <img
-        src={base_image_uri + currentImage.url}
-        title={currentImage.title}
-        alt={currentImage.title}
+        src={image_url + image.url}
+        title={image.title}
+        alt={image.title}
         onClick={(e: React.MouseEvent<HTMLImageElement, MouseEvent>) =>
           e.stopPropagation()
         }
@@ -45,7 +40,7 @@ function GalleryPreview({
         }
       >
         <button onClick={() => setFs(false)}>close</button>
-        <span className="fw hideUsual">{currentImage.title}</span>
+        <span className="fw hideUsual">{image.title}</span>
       </div>
       <div
         className="bottomSheetHolder"
@@ -54,18 +49,22 @@ function GalleryPreview({
         }
       >
         <div className="bottomSheet">
-          <DescriptionArea>{`# ${currentImage.title}
-${
-  currentImage.characters
-    ? `Character${
-        currentImage.characters.length > 1 ? "s" : ""
-      }: ${currentImage.characters
-        .map((v) => `${v[1] ? "*" + v[1] + "'s* " : ""}${v[0]}`)
-        .join(", ")}`
-    : ""
-}
-
-${currentImage.description}`}</DescriptionArea>
+          <h1>{image.title}</h1>
+          <p>
+            {image.characters ? (
+              <span>
+                Character{image.characters.length > 1 ? "s" : ""}:{" "}
+                {image.characters
+                  .map((v) => `${v[1] ? `${v[1]}'s ` : ""}${v[0]}`)
+                  .join(", ")}
+              </span>
+            ) : (
+              <></>
+            )}
+            <span> • </span>
+            <span>Created {new Date(image.date).toLocaleDateString()}</span>
+          </p>
+          <p>{image.description}</p>
         </div>
       </div>
     </div>
@@ -75,26 +74,17 @@ ${currentImage.description}`}</DescriptionArea>
 }
 
 function Image({
-  imagename,
-  base_uri,
-  base_image_uri,
+  image,
+  image_url,
   screenControls,
 }: {
-  imagename: string;
-  base_uri: string;
-  base_image_uri: string;
+  image: GalleryIndex;
+  image_url: string;
   screenControls: (x: GalleryIndex) => void;
 }) {
-  const [image, setImage] = useState({} as GalleryIndex);
-  async function getImage() {
-    setImage(await (await fetch(base_uri + imagename + ".json")).json());
-  }
-  useEffect(() => {
-    getImage();
-  }, [imagename]);
   return image.title ? (
     <img
-      src={base_image_uri + image.url}
+      src={image_url + image.url}
       title={image.title + "\nDouble-click to open fullscreen"}
       alt={image.title}
       onDoubleClick={() => screenControls(image)}
@@ -105,18 +95,20 @@ function Image({
   );
 }
 
-function Gallery({ url }: { url: string }) {
+function Gallery({ url, image_url }: { url: string; image_url: string }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [fullscreen, setFullscreen] = useState(false);
   const [image, setImage] = useState({} as GalleryIndex);
-  const [images, setImages] = useState({} as GalleryFile);
-  const minOpenness = 5;
-  const [openness, setOpenness] = useState(0);
+  const [images, setImages] = useState([] as GalleryIndex[]);
+  const [page, setPage] = useState(0);
   async function getImages() {
-    setImages(await (await fetch(url)).json());
+    setImages(await (await fetch(url + page)).json());
+    console.log(images);
   }
   useEffect(() => {
     getImages();
+  }, [page]);
+  useEffect(() => {
     const container = containerRef.current;
     if (container == null) return;
     var prevMousePosX = 0;
@@ -140,40 +132,34 @@ function Gallery({ url }: { url: string }) {
       <div className="GalleryButtons">
         <button
           className="special_disabled"
-          onClick={() => setOpenness(openness - minOpenness)}
-          disabled={openness <= 0}
+          onClick={() => setPage(page - 1)}
+          disabled={page <= 0}
         >
-          {openness <= minOpenness ? "Close" : "See Less"}
+          See Less
         </button>
+        <button disabled>Page {page}</button>
         <button
           className="special_disabled"
-          onClick={() => setOpenness(openness + minOpenness)}
-          disabled={openness >= (images.images?.length ?? 0)}
+          onClick={() => setPage(page + 1)}
+          disabled={images.length < 5}
         >
-          {openness <= 0 ? "Open" : "See More"}
+          See More
         </button>
       </div>
-      <div
-        className={`Gallery ${openness <= 0 ? "closed" : ""}`}
-        ref={containerRef}
-      >
-        {images.images ? (
+      <div className={`Gallery`} ref={containerRef}>
+        {images ? (
           <>
-            {images.images
-              .slice(openness - minOpenness, openness)
-              .map((x, i) => (
-                <Image
-                  key={i}
-                  imagename={x}
-                  base_uri={images.base_uri}
-                  base_image_uri={images.image_uri}
-                  screenControls={openFullscreen}
-                />
-              ))}
+            {images.map((x, i) => (
+              <Image
+                key={i}
+                image={x}
+                image_url={image_url}
+                screenControls={openFullscreen}
+              />
+            ))}
             <GalleryPreview
-              base_uri={images.base_uri}
-              base_image_uri={images.image_uri}
               image={image}
+              image_url={image_url}
               fullscreen={[fullscreen, setFullscreen]}
             />
           </>

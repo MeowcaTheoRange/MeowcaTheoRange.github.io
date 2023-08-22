@@ -162,13 +162,13 @@ I like programming (sometimes), drawing art, designing characters, shaping the i
         </div>
         <div className="App alignLeft">
           <DescriptionArea>{`# Blog
-A place where I can talk about stuff I've done, or whatever. Might cause a lot of network noise if opened!`}</DescriptionArea>
-          <Blog url="https://cdn.mtr.codes/blog/blogs.json" />
+A place where I can talk about stuff.`}</DescriptionArea>
+          <Blog url="https://api.mtr.codes/api/blog/" />
         </div>
         <div className="App alignLeft">
           <DescriptionArea>{`# Events
 Events I am going to in the near future. Most are usually in-person.`}</DescriptionArea>
-          <Events url="https://cdn.mtr.codes/events/events.json" />
+          <Events url="https://api.mtr.codes/api/events/" />
         </div>
         <div className="App alignLeft">
           <DescriptionArea>{`# Who do I look up to?
@@ -194,7 +194,10 @@ OK, but seriously. Mastodon and the Fediverse has been a huge influence in how I
           <DescriptionArea>{`# Art Gallery
 A quick overview of some of the things I've drawn. It's not all of them, but it's the ones I'm most proud of.`}</DescriptionArea>
         </div>
-        <Gallery url="https://cdn.mtr.codes/gallery/images.json" />
+        <Gallery
+          url="https://api.mtr.codes/api/gallery/"
+          image_url="https://cdn.mtr.codes/"
+        />
         <div className="App alignLeft">
           <DescriptionArea>
             {`## I develop things as a hobby.
