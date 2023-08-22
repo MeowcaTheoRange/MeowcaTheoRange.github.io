@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import DescriptionArea from "./DescriptionArea";
 import "./Events.css";
 
@@ -15,9 +15,11 @@ type Event = {
 function Events({ url }: { url: string }) {
   const [events, setEvents] = useState([] as Event[]);
   const [page, setPage] = useState(0);
-  const [open, setOpen] = useState(false);
+  const stopUpdating = useRef(false);
   async function getEvents() {
-    setEvents(await (await fetch(url + page)).json());
+    const getEvents = await (await fetch(url + page)).json();
+    if (getEvents.length < 5) stopUpdating.current = true;
+    setEvents(events.concat(getEvents));
   }
   useEffect(() => {
     getEvents();
@@ -77,19 +79,11 @@ function Events({ url }: { url: string }) {
       ))}
       <div className="buttons">
         <button
-          className="special_disabled"
-          onClick={() => setPage(page - 1)}
-          disabled={page <= 0}
-        >
-          See Less
-        </button>
-        <button disabled>Page {page}</button>
-        <button
-          className="special_disabled"
+          className="special_disabled material-symbols-outlined"
           onClick={() => setPage(page + 1)}
-          disabled={events.length < 5}
+          disabled={stopUpdating.current}
         >
-          See More
+          expand_more
         </button>
       </div>
     </div>

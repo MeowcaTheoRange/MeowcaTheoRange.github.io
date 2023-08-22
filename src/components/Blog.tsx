@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* Someday, optimize for accessibility. */
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./Blog.css";
 import Dialog from "./Dialog";
 
@@ -64,9 +64,11 @@ function BlogIndexDisplay({
 function Blog({ url }: { url: string }) {
   const [blog, setBlog] = useState([] as BlogIndex[]);
   const [page, setPage] = useState(0);
+  const stopUpdating = useRef(false);
   async function getBlog() {
-    setBlog(await (await fetch(url + page)).json());
-    // if (blog.length === 0) setOpenness(openness - 1);
+    const getBlogs = await (await fetch(url + page)).json();
+    if (getBlogs.length < 5) stopUpdating.current = true;
+    setBlog(blog.concat(getBlogs));
   }
   useEffect(() => {
     getBlog();
@@ -95,19 +97,11 @@ function Blog({ url }: { url: string }) {
         )}
         <div className="buttons">
           <button
-            className="special_disabled"
-            onClick={() => setPage(page - 1)}
-            disabled={page <= 0}
-          >
-            See Less
-          </button>
-          <button disabled>Page {page}</button>
-          <button
-            className="special_disabled"
+            className="special_disabled material-symbols-outlined"
             onClick={() => setPage(page + 1)}
-            disabled={blog.length < 5}
+            disabled={stopUpdating.current}
           >
-            See More
+            expand_more
           </button>
         </div>
       </div>

@@ -82,7 +82,7 @@ function Image({
   image_url: string;
   screenControls: (x: GalleryIndex) => void;
 }) {
-  return image.title ? (
+  return (
     <img
       src={image_url + image.url}
       title={image.title + "\nDouble-click to open fullscreen"}
@@ -90,28 +90,34 @@ function Image({
       onDoubleClick={() => screenControls(image)}
       draggable="false"
     />
-  ) : (
-    <></>
   );
 }
 
 function Gallery({ url, image_url }: { url: string; image_url: string }) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const containerButtonRef = useRef<HTMLButtonElement>(null);
   const [fullscreen, setFullscreen] = useState(false);
   const [image, setImage] = useState({} as GalleryIndex);
   const [images, setImages] = useState([] as GalleryIndex[]);
-  const [page, setPage] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const page = useRef(0);
+  const stopUpdating = useRef(false);
+  let x = 0;
   async function getImages() {
-    setImages(await (await fetch(url + page)).json());
-    console.log(images);
+    const getImages = await (await fetch(url + page.current)).json();
+    if (getImages.length < 5) stopUpdating.current = true;
+    setImages(images.concat(getImages));
   }
   useEffect(() => {
-    getImages();
-  }, [page]);
+    getImages().then(() => setLoading(false));
+  }, [page.current]);
   useEffect(() => {
     const container = containerRef.current;
     if (container == null) return;
+    const containerButton = containerButtonRef.current;
+    if (containerButton == null) return;
     var prevMousePosX = 0;
+    var prevScrollLeft = 0;
     // @ts-ignore
     container.onmousemove = function (
       event: React.MouseEvent<HTMLDivElement, MouseEvent>
@@ -121,6 +127,23 @@ function Gallery({ url, image_url }: { url: string; image_url: string }) {
       }
       prevMousePosX = event.clientX;
     };
+    function doLoading() {
+      if (container == null) return;
+      console.log("ok loading");
+      page.current += 1;
+      setLoading(true);
+    }
+    // @ts-ignore
+    container.onscrollend = function () {
+      if (
+        container.offsetWidth + container.scrollLeft >= container.scrollWidth &&
+        !loading &&
+        !stopUpdating.current
+      ) {
+        doLoading();
+      }
+    };
+    containerButton.onclick = doLoading;
   }, []);
   function openFullscreen(image: GalleryIndex) {
     setFullscreen(true);
@@ -129,23 +152,6 @@ function Gallery({ url, image_url }: { url: string; image_url: string }) {
 
   return (
     <>
-      <div className="GalleryButtons">
-        <button
-          className="special_disabled"
-          onClick={() => setPage(page - 1)}
-          disabled={page <= 0}
-        >
-          See Less
-        </button>
-        <button disabled>Page {page}</button>
-        <button
-          className="special_disabled"
-          onClick={() => setPage(page + 1)}
-          disabled={images.length < 5}
-        >
-          See More
-        </button>
-      </div>
       <div className={`Gallery`} ref={containerRef}>
         {images ? (
           <>
@@ -157,16 +163,26 @@ function Gallery({ url, image_url }: { url: string; image_url: string }) {
                 screenControls={openFullscreen}
               />
             ))}
-            <GalleryPreview
-              image={image}
-              image_url={image_url}
-              fullscreen={[fullscreen, setFullscreen]}
-            />
+            {stopUpdating.current ? (
+              <></>
+            ) : (
+              <button
+                ref={containerButtonRef}
+                className="material-symbols-outlined"
+              >
+                chevron_right
+              </button>
+            )}
           </>
         ) : (
           <></>
         )}
       </div>
+      <GalleryPreview
+        image={image}
+        image_url={image_url}
+        fullscreen={[fullscreen, setFullscreen]}
+      />
     </>
   );
 }
