@@ -8,12 +8,12 @@ const statusHour = [
   { name: "Offline", icon: "account_circle_off" }, // 03:00 - 03 AM
   { name: "Offline", icon: "account_circle_off" }, // 04:00 - 04 AM
   { name: "Offline", icon: "account_circle_off" }, // 05:00 - 05 AM
-  { name: "Offline", icon: "account_circle_off" }, // 06:00 - 06 AM
-  { name: "Offline", icon: "account_circle_off" }, // 07:00 - 07 AM
-  { name: "Probably Online", icon: "clear_night" }, // 08:00 - 08 AM
-  { name: "Probably Online", icon: "clear_night" }, // 09:00 - 09 AM
-  { name: "Probably Online", icon: "clear_night" }, // 10:00 - 10 AM
-  { name: "Probably Online", icon: "clear_night" }, // 11:00 - 11 AM
+  { name: "Probably Online", icon: "clear_night" }, // 06:00 - 06 AM
+  { name: "Probably Online", icon: "clear_night" }, // 07:00 - 07 AM
+  { name: "Online", icon: "account_circle" }, // 08:00 - 08 AM
+  { name: "Online", icon: "account_circle" }, // 09:00 - 09 AM
+  { name: "Online", icon: "account_circle" }, // 10:00 - 10 AM
+  { name: "Online", icon: "account_circle" }, // 11:00 - 11 AM
   { name: "Online", icon: "account_circle" }, // 12:00 - 12 PM
   { name: "Online", icon: "account_circle" }, // 13:00 - 01 PM
   { name: "Online", icon: "account_circle" }, // 14:00 - 02 PM
@@ -24,8 +24,8 @@ const statusHour = [
   { name: "Online", icon: "account_circle" }, // 19:00 - 07 PM
   { name: "Online", icon: "account_circle" }, // 20:00 - 08 PM
   { name: "Online", icon: "account_circle" }, // 21:00 - 09 PM
-  { name: "Online", icon: "account_circle" }, // 22:00 - 10 PM
-  { name: "Probably Online", icon: "clear_night" }, // 23:00 - 11 AM
+  { name: "Offline", icon: "account_circle_off" }, // 22:00 - 10 PM
+  { name: "Offline", icon: "account_circle_off" }, // 23:00 - 11 AM
 ];
 
 function ClockWidget() {

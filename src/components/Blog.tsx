@@ -37,8 +37,7 @@ function BlogIndexDisplay({
             href="#"
             onClick={() => {
               setDialogContent({
-                header:
-                  "Published " + new Date(blogidx.date).toLocaleDateString(),
+                header: "Published " + new Date(blogidx.date).toLocaleString(),
                 title: blogidx.title,
                 underHeader: "by " + blogidx.author,
                 children: <DescriptionArea>{blogidx.content}</DescriptionArea>,
@@ -55,7 +54,7 @@ function BlogIndexDisplay({
         <div className="creationName">
           <span>by {blogidx.author}</span>
           <span> • </span>
-          <span>Published {new Date(blogidx.date).toLocaleDateString()}</span>
+          <span>Published {new Date(blogidx.date).toLocaleString()}</span>
         </div>
       </div>
     </div>

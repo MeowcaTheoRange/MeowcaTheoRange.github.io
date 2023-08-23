@@ -32,15 +32,24 @@ function Events({ url }: { url: string }) {
             <div className="title">
               {event.url ? (
                 <a href={event.url} target="_blank" rel="noreferrer">
+                  <span>
+                    {event.completed === true
+                      ? "✓ "
+                      : new Date(event.dateEnd).getTime() < Date.now()
+                      ? "X "
+                      : ""}
+                    {event.name}
+                  </span>
+                </a>
+              ) : (
+                <span>
                   {event.completed === true
                     ? "✓ "
                     : new Date(event.dateEnd).getTime() < Date.now()
                     ? "X "
                     : ""}
-                  <span>{event.name}</span>
-                </a>
-              ) : (
-                <span>{event.name}</span>
+                  {event.name}
+                </span>
               )}
             </div>
             <div className="creationName">

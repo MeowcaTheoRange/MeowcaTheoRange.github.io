@@ -173,8 +173,10 @@ input[type="submit"].special_disabled:disabled {
 }
 
 input[type="text"],
+input[type="url"],
 input[type="password"],
 input[type="date"],
+input[type="datetime-local"],
 textarea {
   padding: 4px;
   border-radius: 4px;
@@ -187,18 +189,24 @@ textarea {
 }
 
 input[type="text"]:not(:disabled):not(.nohover):hover,
+input[type="url"]:not(:disabled):not(.nohover):hover,
 input[type="password"]:not(:disabled):not(.nohover):hover,
 input[type="date"]:not(:disabled):not(.nohover):hover,
+input[type="datetime-local"]:not(:disabled):not(.nohover):hover,
 textarea:not(:disabled):not(.nohover):hover {
   background-color: #0004;
 }
 
 input[type="text"]:not(:disabled):active,
 input[type="text"]:not(:disabled):focus,
+input[type="url"]:not(:disabled):active,
+input[type="url"]:not(:disabled):focus,
 input[type="password"]:not(:disabled):active,
 input[type="password"]:not(:disabled):focus,
 input[type="date"]:not(:disabled):active,
 input[type="date"]:not(:disabled):focus,
+input[type="datetime-local"]:not(:disabled):active,
+input[type="datetime-local"]:not(:disabled):focus,
 textarea:not(:disabled):active,
 textarea:not(:disabled):focus {
   color: var(--fg-color);
@@ -206,8 +214,10 @@ textarea:not(:disabled):focus {
 }
 
 input[type="text"]:disabled,
+input[type="url"]:disabled,
 input[type="password"]:disabled,
 input[type="date"]:disabled,
+input[type="datetime-local"]:disabled,
 textarea:disabled {
   color: var(--bad-fg-color);
   background-color: var(--bad-bg-color);
@@ -216,8 +226,10 @@ textarea:disabled {
 }
 
 input[type="text"].special_disabled:disabled,
+input[type="url"].special_disabled:disabled,
 input[type="password"].special_disabled:disabled,
 input[type="date"].special_disabled:disabled,
+input[type="datetime-local"].special_disabled:disabled,
 textarea.special_disabled:disabled {
   background-color: transparent;
   border: 2px solid var(--fg-color);
