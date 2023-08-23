@@ -83,8 +83,8 @@ function Blog({ url }: { url: string }) {
   });
   return (
     <>
-      {dialogControls.jsx}
       <div className="Blog">
+        {dialogControls.jsx}
         {blog[0] ? (
           blog.map((blogidx, i) => (
             <BlogIndexDisplay

@@ -43,3 +43,9 @@
   justify-content: center;
   gap: 4px;
 }
+
+.Blog .Dialog .box .DescriptionArea img,
+.Blog .Dialog .box .DescriptionArea p {
+  width: 100%;
+  height: auto;
+}
