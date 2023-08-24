@@ -58,7 +58,7 @@ function AddNew() {
           }}
           onSubmit={async (values, { setSubmitting }) => {
             const blogResponse = await fetch(
-              "https://api.mtr.codes/api/blog/0",
+              "https://api.abtmtr.link/api/blog/0",
               {
                 method: "POST",
                 body: JSON.stringify(values),
@@ -127,7 +127,7 @@ function AddNew() {
           }}
           onSubmit={async (values, { setSubmitting }) => {
             const blogResponse = await fetch(
-              "https://api.mtr.codes/api/events/0",
+              "https://api.abtmtr.link/api/events/0",
               {
                 method: "POST",
                 body: JSON.stringify(values),
@@ -189,7 +189,7 @@ function AddNew() {
           }}
           onSubmit={async (values, { setSubmitting }) => {
             const blogResponse = await fetch(
-              "https://api.mtr.codes/api/events/0",
+              "https://api.abtmtr.link/api/events/0",
               {
                 method: "PUT",
                 body: JSON.stringify(values),
@@ -253,7 +253,7 @@ function AddNew() {
           }}
           onSubmit={async (values, { setSubmitting }) => {
             const blogResponse = await fetch(
-              "https://api.mtr.codes/api/gallery/0",
+              "https://api.abtmtr.link/api/gallery/0",
               {
                 method: "POST",
                 body: JSON.stringify(values),
