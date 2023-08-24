@@ -186,3 +186,9 @@
   color: var(--fg-color);
   opacity: 0.5;
 }
+
+@media (max-width: 960px) {
+  .Gallery {
+    width: calc(100% + 32px);
+  }
+}
