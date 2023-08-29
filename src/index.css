@@ -2,17 +2,17 @@
 
 :root {
   --fg-color: #ffa080;
-  --bg-color: #401020;
+  --bg-color: #401000;
   --bad-fg-color: #ff8080;
-  --bad-bg-color: #402020;
+  --bad-bg-color: #400000;
   --secret-fg-color: #ffff80;
-  --secret-bg-color: #404020;
+  --secret-bg-color: #404000;
   --secret-effect: repeating-linear-gradient(
     45deg,
     transparent,
     transparent 40px,
-    #202010 40px,
-    #202010 80px
+    #202000 40px,
+    #202000 80px
   );
 }
 
