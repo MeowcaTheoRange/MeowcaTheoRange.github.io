@@ -104,6 +104,13 @@ function App() {
               name="MSPFA"
               color={mainColor}
             />
+            <MediaBox
+              icon="ko-fi"
+              iconPack="ios"
+              link="https://ko-fi.com/meowcatheorange/commissions"
+              name="Ko-Fi"
+              color={mainColor}
+            />
           </div>
           <DescriptionArea>{`# Hey, what's up?
 I'm also known as *Theo Range* sometimes in place of a real name, but it should be noted that *Theo* is not my real name.
