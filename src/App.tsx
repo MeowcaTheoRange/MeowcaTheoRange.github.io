@@ -172,7 +172,9 @@ OK, but seriously. Mastodon and the Fediverse has been a huge influence in how I
         </div>
         <div className="App alignLeft">
           <DescriptionArea>{`# Art Gallery
-A quick overview of some of the things I've drawn. It's not all of them, but it's the ones I'm most proud of.`}</DescriptionArea>
+A quick overview of some of the things I've drawn. It's not all of them, but it's the ones I'm most proud of.
+
+Want to see commission art? Head over to my [Ko-fi](https://ko-fi.com/meowcatheorange/) to see them, or even buy some!`}</DescriptionArea>
         </div>
         <Gallery
           url="https://api.abtmtr.link/api/gallery/"

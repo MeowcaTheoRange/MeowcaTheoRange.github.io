@@ -345,7 +345,7 @@ function AddNew() {
   useEffect(() => {
     window.addEventListener("keydown", function (event: KeyboardEvent) {
       if (event.shiftKey && event.key === "N") {
-        event.preventDefault();
+        if (!open) event.preventDefault();
         console.log("SHIFT + N");
         setOpen(true);
       }
