@@ -53,7 +53,7 @@ function AddNew() {
           initialValues={{
             title: "",
             author: "MeowcaTheoRange",
-            date: new Date().toISOString().slice(0, 19),
+            date: new Date(Date.now() - 3.6e6 * 5).toISOString().slice(0, 19),
             connection_string: "",
           }}
           onSubmit={async (values, { setSubmitting }) => {
@@ -117,8 +117,12 @@ function AddNew() {
         <Formik
           initialValues={{
             name: "",
-            dateStart: new Date().toISOString().slice(0, 10),
-            dateEnd: new Date().toISOString().slice(0, 10),
+            dateStart: new Date(Date.now() - 3.6e6 * 5)
+              .toISOString()
+              .slice(0, 19),
+            dateEnd: new Date(Date.now() - 3.6e6 * 5)
+              .toISOString()
+              .slice(0, 19),
             location: "",
             url: "",
             completed: false,
@@ -146,9 +150,9 @@ function AddNew() {
               <label htmlFor="name">Event Name</label>
               <Field type="text" name="name" />
               <label htmlFor="dateStart">Starting Date</label>
-              <Field type="date" name="dateStart" />
+              <Field type="datetime-local" name="dateStart" />
               <label htmlFor="dateEnd">Ending Date</label>
-              <Field type="date" name="dateEnd" />
+              <Field type="datetime-local" name="dateEnd" />
               <label htmlFor="location">Location</label>
               <Field type="text" name="location" placeholder="City, State" />
               <label htmlFor="url">Web Link</label>
@@ -248,7 +252,7 @@ function AddNew() {
             title: "",
             description: "",
             url: "gallery/images/",
-            date: new Date().toISOString().slice(0, 10),
+            date: new Date(Date.now() - 3.6e6 * 5).toISOString().slice(0, 19),
             characters: [],
           }}
           onSubmit={async (values, { setSubmitting }) => {
@@ -281,7 +285,7 @@ function AddNew() {
               <label htmlFor="url">Image URL</label>
               <Field type="text" name="url" placeholder="https://..." />
               <label htmlFor="date">Date Created</label>
-              <Field type="date" name="date" />
+              <Field type="datetime-local" name="date" />
               <label htmlFor="characters">Characters</label>
               <FieldArray
                 name="characters"
