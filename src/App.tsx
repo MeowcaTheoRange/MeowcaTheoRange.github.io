@@ -65,7 +65,7 @@ function App() {
             name="MeowcaTheoRange"
             pronunciationMap="miaʊkəθɪoʊreɪnʤ"
             pronunciationMapSimple="meow-cuh-thee-oh-raynj"
-            pronouns="he/him"
+            pronouns="he/any"
             birthday="Aug 7"
             age="Minor"
           />
