@@ -16,20 +16,26 @@
 .Gallery div.imageThingy {
   position: relative;
   height: 100%;
+  width: auto;
+  aspect-ratio: 1 / 1;
   flex-grow: 0;
   flex-shrink: 0;
-  border-radius: 4px;
+  border-radius: 8px;
   transition: filter 0.125s;
+  background-color: #0008;
   overflow: hidden;
+  text-align: center;
+  padding: 8px;
+  box-sizing: border-box;
 }
 
 .Gallery .imageThingy img {
-  position: absolute;
-  display: block;
   height: 100%;
+  width: auto;
   user-select: none;
   transition: filter 0.125s;
   border-radius: 4px;
+  object-fit: contain;
 }
 
 .Gallery .imageThingy img.cw {
