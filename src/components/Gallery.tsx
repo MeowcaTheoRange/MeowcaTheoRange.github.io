@@ -7,6 +7,7 @@ type GalleryIndex = {
   title: string;
   description: string;
   date: string;
+  content_warning?: string;
 };
 
 function GalleryPreview({
@@ -82,14 +83,40 @@ function Image({
   image_url: string;
   screenControls: (x: GalleryIndex) => void;
 }) {
+  const dumbShit = useRef<HTMLDivElement>(null);
+  const dumbImage = useRef<HTMLImageElement>(null);
   return (
-    <img
-      src={image_url + image.url}
-      title={image.title + "\nDouble-click to open fullscreen"}
-      alt={image.title}
+    <div
+      className="imageThingy"
+      ref={dumbShit}
       onDoubleClick={() => screenControls(image)}
-      draggable="false"
-    />
+    >
+      <img
+        ref={dumbImage}
+        onLoad={() => {
+          if (dumbShit.current && dumbImage.current)
+            dumbShit.current.style.width = dumbImage.current.clientWidth + "px";
+        }}
+        src={image_url + image.url}
+        title={image.title + "\nDouble-click to open fullscreen"}
+        alt={image.title}
+        draggable="false"
+        className={
+          image.content_warning != null && image.content_warning !== ""
+            ? "cw"
+            : ""
+        }
+      />
+      {image.content_warning != null && image.content_warning !== "" ? (
+        <span className="cw">
+          <b>Content Warning:</b>
+          <br />
+          {image.content_warning}
+        </span>
+      ) : (
+        <></>
+      )}
+    </div>
   );
 }
 

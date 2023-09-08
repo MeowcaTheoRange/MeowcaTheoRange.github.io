@@ -4,7 +4,7 @@
   overflow: auto hidden;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
   box-sizing: border-box;
   padding: 0 16px;
@@ -13,20 +13,65 @@
   user-select: none;
 }
 
-.Gallery img {
+.Gallery div.imageThingy {
+  position: relative;
+  height: 100%;
+  flex-grow: 0;
+  flex-shrink: 0;
+  border-radius: 4px;
+  transition: filter 0.125s;
+  overflow: hidden;
+}
+
+.Gallery .imageThingy img {
+  position: absolute;
+  display: block;
   height: 100%;
   user-select: none;
   transition: filter 0.125s;
   border-radius: 4px;
 }
 
-.Gallery img:hover {
+.Gallery .imageThingy img.cw {
+  filter: blur(8px);
+}
+
+.Gallery .imageThingy span.cw {
+  position: absolute;
+  text-align: center;
+  width: 75%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f00;
+  transition: background-color 0.125s, text-shadow 0.125s;
+}
+
+.Gallery .imageThingy:hover {
   filter: brightness(80%);
 }
 
-.Gallery img:active {
-  transition: none;
+.Gallery .imageThingy:hover img.cw {
+  filter: blur(6px);
+}
+
+.Gallery .imageThingy:hover span.cw {
+  background-color: #f008;
+}
+
+.Gallery .imageThingy:active {
+  /* transition: none; */
   filter: brightness(50%);
+}
+
+.Gallery .imageThingy:active img.cw {
+  filter: blur(0px);
+}
+
+.Gallery .imageThingy:active span.cw {
+  background-color: #f000;
+  text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff,
+    1px 1px 0 #fff;
 }
 /* --- */
 
