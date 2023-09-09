@@ -95,7 +95,7 @@ function ClockWidget() {
     <div className="ClockWidget">
       <canvas id="canvas" width="64" height="64"></canvas>
       <div className="vertical">
-        <span id="time">
+        <span id="time" contentEditable>
           {date.toLocaleString(undefined, {
             timeStyle: "short",
             dateStyle: "short",
