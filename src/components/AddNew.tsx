@@ -284,6 +284,8 @@ function AddNew() {
               ></Field>
               <label htmlFor="url">Image URL</label>
               <Field type="text" name="url" placeholder="https://..." />
+              <label htmlFor="url">Content Warning</label>
+              <Field type="text" name="content_warning" placeholder="yo mama" />
               <label htmlFor="date">Date Created</label>
               <Field type="datetime-local" name="date" />
               <label htmlFor="characters">Characters</label>
