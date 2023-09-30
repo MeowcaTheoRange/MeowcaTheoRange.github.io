@@ -1,4 +1,3 @@
-import React from "react";
 import "./MediaBox.css";
 
 function MediaBox({
@@ -15,9 +14,10 @@ function MediaBox({
   name: string;
 }) {
   return (
-    <a className="MediaBox" href={link} target="_blank">
+    <a className="MediaBox" href={link} target="_blank" rel="noreferrer">
       <img
         alt={name}
+        title={name}
         height="48"
         src={`https://img.icons8.com/${
           iconPack ?? "windows"

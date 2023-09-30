@@ -65,23 +65,17 @@ function App() {
             name="MeowcaTheoRange"
             pronunciationMap="miaʊkəθɪoʊreɪnʤ"
             pronunciationMapSimple="meow-cuh-thee-oh-raynj"
-            pronouns="he/any"
+            pronouns="he/him"
             birthday="Aug 7"
             age="Minor"
           />
           <ClockWidget />
           <div className="centej">
             <MediaBox
-              icon="mastodon"
-              link="https://karkatdyinginagluetrap.com/@trollcall"
-              name="Mastodon"
-              color={mainColor}
-            />
-            <MediaBox
-              icon="matrix-logo"
+              icon="share-2"
               iconPack="material"
-              link="https://matrix.to/#/@trollcall:thelbutton.com"
-              name="Matrix"
+              link="https://moth.zone/meowcatheorange"
+              name="Fediverse"
               color={mainColor}
             />
             <MediaBox
@@ -109,6 +103,13 @@ function App() {
               iconPack="ios"
               link="https://ko-fi.com/meowcatheorange/commissions"
               name="Ko-Fi"
+              color={mainColor}
+            />
+            <MediaBox
+              icon="mail"
+              iconPack="material"
+              link="mailto:me@abtmtr.link"
+              name="Email"
               color={mainColor}
             />
           </div>
