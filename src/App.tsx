@@ -1,7 +1,6 @@
 import { useState } from "react";
 import "./App.css";
 import AddNew from "./components/AddNew";
-import Blog from "./components/Blog";
 import ClockWidget from "./components/ClockWidget";
 import DescriptionArea from "./components/DescriptionArea";
 import Events from "./components/Events";
@@ -143,8 +142,9 @@ I like programming (sometimes), drawing art, designing characters, shaping the i
         </div>
         <div className="App alignLeft">
           <DescriptionArea>{`# Blog
-A place where I can talk about stuff.`}</DescriptionArea>
-          <Blog url="https://api.abtmtr.link/api/blog/" />
+A place where I can talk about stuff.
+
+[Go to my new blog](https://blog.abtmtr.link/)`}</DescriptionArea>
         </div>
         <div className="App alignLeft">
           <DescriptionArea>{`# Events
